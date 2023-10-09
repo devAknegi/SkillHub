@@ -1,2 +1,2 @@
 # SkillHub
-Collaborative Learning Exchange.
+Collaborative Skills Exchange.
