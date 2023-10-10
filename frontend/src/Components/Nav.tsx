@@ -233,7 +233,7 @@ const Nav = () => {
                 className="bg-transparent p-3 hover:bg-richtextdark rounded-xl transition-all duration-200 text-textdark border border-solid border-richtextdark"
                 onClick={signupformhandler}
               >
-                sign-up
+                Sign-up
               </button>
               <button
                 className="bg-richtextdark p-3 hover:bg-hover rounded-xl transition-all duration-200 text-textdark"
