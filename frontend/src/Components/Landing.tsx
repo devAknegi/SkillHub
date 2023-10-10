@@ -1,6 +1,10 @@
 import { toast } from "sonner";
-
+import FeaturePage from "./FeaturePage";
+import { useSelector } from "react-redux";
+import { selectSession } from "../Store/features/authSlice";
 const Landing = () => {
+
+  const sessionData = useSelector(selectSession);
   return (
     <div className="bg-bgdark flex flex-col">
       <div className="mainHedingdiv  h-full w-[80%] mr-auto ml-auto mt-10">
@@ -25,7 +29,11 @@ const Landing = () => {
             with those offering their expertise.
           </p>
         </div>
-        <div className="mainlandingcontent h-full w-[60%] ml-auto mr-auto mt-8 flex justify-center gap-5">
+        {
+          !sessionData?.access_token && <div className="tempdiv h-[10vh]"></div>
+        }
+        { sessionData?.access_token &&
+          <div className="mainlandingcontent h-full w-[60%] ml-auto mr-auto mt-8 flex justify-center gap-5">
           <button
             className="bg-richtextdark p-3 hover:bg-hover rounded-xl transition-all duration-200 text-textdark"
             onClick={() => {
@@ -42,9 +50,9 @@ const Landing = () => {
           >
             Documentation
           </button>
-        </div>
-        <div className="h-screen"></div>
+        </div>}
       </div>
+      <FeaturePage/>
     </div>
   );
 };

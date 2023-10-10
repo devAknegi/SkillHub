@@ -39,44 +39,39 @@ const FeatureItem: React.FC<{ title: string; description: string }> = ({
 
 const FeaturePage = () => {
   return (
-    <div className="bg-bgdark flex flex-col">
+    <div className="bg-bgdark flex flex-col h-full mt-8">
       <div className="feature-content h-full w-[80%] mx-auto mt-10">
         <div className="text-center">
           <span className="text-textdark text-4xl text-center font-thin">
-            Our Features
+            Features We Offer
           </span>
           <hr className="border-t-2 border-orange-500 my-4" />
         </div>
-        <div className="feature-section w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 pt-[10%]">
+        <div className="feature-section w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 pt-[5%]">
           <FeatureItem
-            title="Skill Profiles:"
-            description="Users can create profilesshowcasingtheir skills, expertise, andthe services
+            title="Skill Profiles"
+            description="Users can create profiles showcasing their skills, expertise, andthe services
             they can offer."
           />
           <FeatureItem
             title="Skill Listings:"
-            description="Individuals can post listingsforthe skills they are lookingto acquire orthe
-            servicesthey need."
-          />
-          <FeatureItem
-            title="Matching Algorithm:"
-            description="Implement a matching algorithm that suggests potential skill maps based
-            on use r profiles and preferences"
+            description="Individuals can post listings for the skills they are looking to acquire or the
+            services they need."
           />
           <FeatureItem
             title="Messaging System:"
-            description="Include a messaging system to facilitate communication between users for
+            description="System to facilitate communication between users for
             arranging skill exchanges."
           />
           <FeatureItem
             title="Rating and Reviews:"
-            description="Allow users to le we ratings and reviews for each other base d on their
-            experienceswith the skill exchange."
+            description="We allow users to rate and review each other based on their
+            experiences with the skill exchange."
           />
           <FeatureItem
             title="Skill Categories:"
             description="Categorize skills into different categories (e.g., programming design,
-              language learning) for easier navigation."
+              language implementation) for easier navigation."
           />
           <FeatureItem
             title="Virtual Skill Sessions:"
@@ -85,22 +80,22 @@ const FeaturePage = () => {
           />
           <FeatureItem
             title="Skill Progress Tracker."
-            description="Users can track their progress in le arning a new skill and showcase
-            achievem ents on their profiles."
+            description="Users can track their progress and showcase
+            achievements on their profiles."
           />
           <FeatureItem
-            title="Community Challenges: "
-            description="Implement community challenges or ev ents where users can participate
-            and showcase their newly acquired skills."
+            title="Community Challenges:"
+            description="Community challenges or events where users can participate
+            and showcase their Skills and build trust."
           />
           <FeatureItem
-            title="SkillSwap Marketplace :"
-            description="Integrate a mattetplace where users can offer and exchange physical
-            goods or servicesin addition to skills."
+            title="SkillSwap Marketplace:"
+            description="A place where users can offer and exchange physical
+            goods or services in addition to skills."
           />
         </div>
-        <br></br>
-        <div className="flex justify-center gap-4">
+        <br />
+        <div className="flex justify-center gap-4 pb-5">
           <div className="flex items-center">
             <span role="img" aria-label="Feature Icon">
               🚀
@@ -126,7 +121,6 @@ const FeaturePage = () => {
             <p className="text-textdark ml-2">Interactive Discussions</p>
           </div>
         </div>
-        <div className="h-screen"></div>
       </div>
     </div>
   );

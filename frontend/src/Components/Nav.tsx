@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { setSession, selectSession } from "../Store/features/authSlice";
+import { Link } from "react-router-dom";
 
 const url: string = import.meta.env.VITE_URL;
 const anon: string = import.meta.env.VITE_KEY;
@@ -117,12 +118,20 @@ const Nav = () => {
   return (
     <div className="border-border border-solid border-b-[0.5px] sticky top-0 left-0 right-0 z-50 h-[4rem] bg-transparent backdrop-blur-sm">
       <div className="navbar h-full w-[80%] pl-4 pr-4 mr-auto ml-auto flex justify-between items-center">
-        <div>
-          <div className="img p-2 h-full w-16 flex gap-1  items-center ">
-            <img src="/logo.png" alt="scg" className="h-full w-full" />
+        <div className="flex gap-4">
+          <div className="img p-2 h-full w-fit flex gap-1 items-center ">
+            <img src="/logo.png" alt="scg" className="h-full w-14" />
             <h1 className="text-textdark text-2xl">SkillHub</h1>
           </div>
+          { sessionData?.access_token &&
+          <div className="links flex items-center">
+            {/* all the links will appear here below is the example how to use navigation  */}
+            {/* <Link to={"/connect"} className="text-textdark underline ">Connect</Link> */}
+          </div>
+          }
+
         </div>
+
         <div className="logininfo relative">
           {sessionData?.access_token ? (
             <div className="relative">
