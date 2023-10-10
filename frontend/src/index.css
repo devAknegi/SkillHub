@@ -20,6 +20,8 @@ body{
     overflow-x: hidden;
 }
 
+
+
 ::-webkit-scrollbar{
     background-color: #1c1c1c;
     width: 7px;

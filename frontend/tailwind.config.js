@@ -8,7 +8,8 @@ module.exports = {
         richtextdark:"#FF6B00",
         textdark:"#D1D1D1",
         border:"#413f45",
-        hover:"#ff8936"
+        hover:"#ff8936",
+        overlay:"#ff6a002f"
       }
     },
   },

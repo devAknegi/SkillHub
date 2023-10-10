@@ -116,7 +116,7 @@ const Nav = () => {
   };
 
   return (
-    <div className="border-border border-solid border-b-[0.5px] sticky top-0 left-0 right-0 z-50 h-[4rem] bg-transparent backdrop-blur-sm">
+    <div className="border-border border-solid border-b-[0.5px] sticky top-0 left-0 right-0 z-50 h-[4rem] bg-transparent backdrop-blur-sm ">
       <div className="navbar h-full w-[80%] pl-4 pr-4 mr-auto ml-auto flex justify-between items-center">
         <div className="flex gap-4">
           <div className="img p-2 h-full w-fit flex gap-1 items-center ">
@@ -132,9 +132,12 @@ const Nav = () => {
 
         </div>
 
-        <div className="logininfo relative">
+        <div className="logoutinfo relative w-fit ">
           {sessionData?.access_token ? (
-            <div className="relative">
+            <div className="relative flex w-fit gap-2 items-center">
+              <Link to={"/dashboard"}>
+              <div className="profile  bg-white  w-12 h-12 flex justify-center items-center rounded-full m-0"></div>
+              </Link>
               <button
                 className="bg-transparent p-3 hover:bg-richtextdark rounded-xl transition-all duration-200 text-textdark border border-solid border-richtextdark"
                 onClick={handleSignOut}

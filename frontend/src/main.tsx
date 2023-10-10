@@ -10,6 +10,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Landing from './Components/Landing.tsx'
+import Dashboard from './Components/userdata/Dashboard.tsx'
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     },
    
   ]
+  }
+  ,{
+    path:"/dashboard",
+    element:<Dashboard />
   }
 ])  
 
