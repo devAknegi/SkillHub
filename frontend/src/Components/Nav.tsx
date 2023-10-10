@@ -25,16 +25,22 @@ const Nav = () => {
 
   const handleSignup = async () => {
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data ,error } = await supabase.auth.signUp({
         email: newemail,
         password: newpassword,
         options: {
           data: { username: uname, phone },
         },
+        
       });
       if (error) {
         toast.error(error.message);
       } else {
+        await supabase.from("profiles").upsert({
+          id:data.user?.id,
+          username:uname,
+          email:newemail
+        } as any)
         toast.success("Check you email for verification!!!");
       }
     } catch (error) {
@@ -136,7 +142,7 @@ const Nav = () => {
           {sessionData?.access_token ? (
             <div className="relative flex w-fit gap-2 items-center">
               <Link to={"/dashboard"}>
-              <div className="profile  bg-white  w-12 h-12 flex justify-center items-center rounded-full m-0"></div>
+              <div className="profile  bg-white  w-12 h-12 flex justify-center items-center rounded-full m-0">?</div>
               </Link>
               <button
                 className="bg-transparent p-3 hover:bg-richtextdark rounded-xl transition-all duration-200 text-textdark border border-solid border-richtextdark"
