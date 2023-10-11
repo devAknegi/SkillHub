@@ -12,6 +12,8 @@ import {
 import Landing from './Components/Landing.tsx'
 import Dashboard from './Components/userdata/Dashboard.tsx'
 import Mainserachpage from './Components/Searchfunc/Mainserachpage.tsx'
+import Filters from './Components/Searchfunc/Filters.tsx'
+import Profile from './Components/Searchfunc/Profile.tsx'
 
 const router = createBrowserRouter([
   {
@@ -29,9 +31,21 @@ const router = createBrowserRouter([
     path:"/dashboard",
     element:<Dashboard />
   },
+
   {
     path:"/findbitbuddies",
-    element:<Mainserachpage/>
+    element:<Mainserachpage/>,
+    children:[
+      {
+        path:"/findbitbuddies/",
+        element:<Filters/>
+      },
+      {
+        path:"/findbitbuddies/:id",
+        element:<Profile/>
+      }
+
+    ]
   }
 ])  
 
