@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { useEffect, useState , useRef } from 'react';
+
+import { useEffect, useState  } from 'react';
 
 const ScrollButton = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
