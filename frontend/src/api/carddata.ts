@@ -1,38 +1,38 @@
 export const cardData = [
     {
-      title: 'PixelPal: Frontend Expert',
-      borderColor: 'violet-800',
+      title: ' Frontend Expert:',
+      subtitle: 'PixelPal',
     },
     {
-      title: 'Backend Guru: DevMate',
-      borderColor: 'zinc-50',
+      title: ' Backend Guru:',
+      subtitle: 'DevMate',
     },
     {
-      title: 'Database Pro: DataMaestro',
-      borderColor: 'amber-200',
+      title: ' Database Pro:',
+      subtitle: 'DataMaestro',
     },
     {
-      title: 'UI/UX Whiz: DesignDynamo',
-      borderColor: 'orange-700',
+      title: ' UI/UX Whiz:',
+      subtitle: 'DesignDynamo',
     },
     {
-      title: 'Security Sentinel: CodeGuardian',
-      borderColor: 'lime-400',
+      title: ' Security Sentinel:',
+      subtitle: 'CodeGuardian',
     },
     {
-      title: 'API Alchemist: EndpointEnchanter',
-      borderColor: 'emerald-600',
+      title: ' API Alchemist:',
+      subtitle: 'EndpointEnchanter',
     },
     {
-      title: 'Mobile Maestro: AppAdept',
-      borderColor: 'yellow-400',
+      title: ' Mobile Maestro:',
+      subtitle: 'AppAdept',
     },
     {
-      title: 'Testing Titan: BugBuster',
-      borderColor: 'cyan-800',
+      title: ' Testing Titan:',
+      subtitle: 'BugBuster',
     },
     {
-      title: 'Deployment Dynamo: LaunchLuminary',
-      borderColor: 'blue-400',
+      title: ' Deployment Dynamo:',
+      subtitle: 'LaunchLuminary',
     },
-  ];
+];
