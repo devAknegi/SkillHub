@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { setSession, selectSession } from "../Store/features/authSlice";
 import { Link } from "react-router-dom";
+import { RiUserSearchLine } from "react-icons/ri";
 
 const url: string = import.meta.env.VITE_URL;
 const anon: string = import.meta.env.VITE_KEY;
@@ -23,22 +24,21 @@ const Nav = () => {
 
   const handleSignup = async () => {
     try {
-      const { data ,error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email: newemail,
         password: newpassword,
         options: {
           data: { username: uname, phone },
         },
-        
       });
       if (error) {
         toast.error(error.message);
       } else {
         await supabase.from("profiles").upsert({
-          id:data.user?.id,
-          username:uname,
-          email:newemail
-        } as any)
+          id: data.user?.id,
+          username: uname,
+          email: newemail,
+        } as any);
         toast.success("Check you email for verification!!!");
       }
     } catch (error) {
@@ -107,15 +107,17 @@ const Nav = () => {
 
   const formhandler = () => {
     if (eleRef.current && ele2Ref.current) {
-      eleRef.current.style.top = eleRef.current.style.top === "70px" ? "-4000px" : "70px";
+      eleRef.current.style.top =
+        eleRef.current.style.top === "70px" ? "-4000px" : "70px";
       ele2Ref.current.style.top = "-4000px";
     }
   };
 
   const signupformhandler = () => {
     if (eleRef.current && ele2Ref.current) {
-      ele2Ref.current.style.top = ele2Ref.current.style.top === "70px" ? "-4000px" : "70px";
-      eleRef.current.style.top = '-4000px';
+      ele2Ref.current.style.top =
+        ele2Ref.current.style.top === "70px" ? "-4000px" : "70px";
+      eleRef.current.style.top = "-4000px";
     }
   };
 
@@ -127,20 +129,29 @@ const Nav = () => {
             <img src="/logo.png" alt="scg" className="h-full w-14" />
             <h1 className="text-textdark text-2xl">SkillHub</h1>
           </div>
-          { sessionData?.access_token &&
-          <div className="links flex items-center">
-            {/* all the links will appear here below is the example how to use navigation  */}
-            {/* <Link to={"/connect"} className="text-textdark underline ">Connect</Link> */}
-          </div>
-          }
-
+          {sessionData?.access_token && (
+            <div className="links flex items-center">
+              <div className="relative inline-block group">
+                <Link to={"/findbitbuddies"} className="text-textdark text-2xl">
+                  <RiUserSearchLine />
+                </Link>
+                <h1 className="absolute top-12 bg-bgdark text-textdark text-2xs p-1 border border-border border-solid rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  {"bitBuddies+"}
+                </h1>
+              </div>
+              {/* all the links will appear here below is the example how to use navigation  */}
+              {/* <Link to={"/connect"} className="text-textdark underline ">Connect</Link> */}
+            </div>
+          )}
         </div>
 
         <div className="logoutinfo relative w-fit ">
           {sessionData?.access_token ? (
             <div className="relative flex w-fit gap-2 items-center">
               <Link to={"/dashboard"}>
-              <div className="profile  bg-white  w-12 h-12 flex justify-center items-center rounded-full m-0">?</div>
+                <div className="profile  bg-white  w-12 h-12 flex justify-center items-center rounded-full m-0">
+                  ?
+                </div>
               </Link>
               <button
                 className="bg-transparent p-3 hover:bg-richtextdark rounded-xl transition-all duration-200 text-textdark border border-solid border-richtextdark"

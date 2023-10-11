@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import Landing from './Components/Landing.tsx'
 import Dashboard from './Components/userdata/Dashboard.tsx'
+import Mainserachpage from './Components/Searchfunc/Mainserachpage.tsx'
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   ,{
     path:"/dashboard",
     element:<Dashboard />
+  },
+  {
+    path:"/findbitbuddies",
+    element:<Mainserachpage/>
   }
 ])  
 

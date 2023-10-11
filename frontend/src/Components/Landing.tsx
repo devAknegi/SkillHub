@@ -57,7 +57,6 @@ const Landing = () => {
         <ScrollButton />
       </div>
       <FeaturePage />
-      <div className="h-screen"></div>
     </div >
   );
 };
