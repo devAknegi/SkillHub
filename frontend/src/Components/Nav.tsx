@@ -1,7 +1,5 @@
 import { toast } from "sonner";
-
-import { useRef } from "react";
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { setSession, selectSession } from "../Store/features/authSlice";
