@@ -1,4 +1,3 @@
-import { configureStore } from '@reduxjs/toolkit';
 import { useEffect, useState , useRef } from 'react';
 
 const ScrollButton = () => {
