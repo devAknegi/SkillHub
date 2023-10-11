@@ -15,4 +15,5 @@ model profiles {
   email        String   @unique @db.VarChar
   phone_number String?
   username     String
+  Experties    String[]
 }
