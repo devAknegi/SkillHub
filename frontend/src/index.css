@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Young+Serif&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,7 +19,7 @@
 html{
     
     background: var(--black);
-    font-family: "Young Serif";
+    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -28,6 +28,26 @@ body{
 }
 
 
+.mainsearch{
+    grid-template-rows: 1fr 9fr;
+
+}
+
+.filters{
+    grid-template-columns: 7fr 3fr;
+}
+
+.filteritems{
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows:repeat(3,1fr) ;
+}
+
+.filtercards{
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 ::-webkit-scrollbar{
     background-color: var(--black);
@@ -55,4 +75,3 @@ body{
     inset: 0;
     margin : auto;
   }
-  
