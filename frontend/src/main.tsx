@@ -4,17 +4,17 @@ import App from './App.tsx'
 import './index.css'
 import { Toaster } from 'sonner'
 import { Provider } from 'react-redux'
-import store from './Store/store.ts'
+import store from './Components/Store/store.ts'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Landing from './Components/Landing.tsx'
+import Landing from './Components/primarycomponents/Landing.tsx'
 // import Dashboard from './Components/userdata/Dashboard.tsx'
 import Mainserachpage from './Components/Searchfunc/Mainserachpage.tsx'
 import Filters from './Components/Searchfunc/Filters.tsx'
 import Profile from './Components/Searchfunc/Profile.tsx'
-import Layout from './Components/lib/Layout.tsx'
+import Layout from './Components/userdata/Layout.tsx'
 
 const router = createBrowserRouter([
   {

@@ -1,7 +1,7 @@
 import { toast } from "sonner";
 import FeaturePage from "./FeaturePage";
 import { useSelector } from "react-redux";
-import { selectSession } from "../Store/features/authSlice";
+import { selectSession } from "../Store/Slices/authSlice";
 import ScrollButton from "./ScrollButton";
 
 const Landing = () => {

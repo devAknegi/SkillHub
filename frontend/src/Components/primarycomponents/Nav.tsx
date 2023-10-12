@@ -2,7 +2,7 @@ import { toast } from "sonner";
 import { useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import { setSession, selectSession } from "../Store/features/authSlice";
+import { setSession, selectSession } from "../Store/Slices/authSlice";
 import { Link } from "react-router-dom";
 import { RiUserSearchLine } from "react-icons/ri";
 
