@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Addfriend from "./Addfriend";
 
 type UserData = {
   id?: string;
@@ -7,7 +8,7 @@ type UserData = {
   bio?: string;
   skills?: string[];
   email?: string;
-  Experties?: string[];
+  Expertise?: string[];
   phone_number?: string;
   username?: string;
   // Add other properties as needed
@@ -16,6 +17,7 @@ type UserData = {
 const Profile = () => {
   const [userData, setUserData] = useState<UserData>({});
   const { id } = useParams();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,15 +48,15 @@ const Profile = () => {
           </div>
           <div className="border border-border  p-4 flex gap-3 items-center rounded-full ">
             <span className="text-4xl text-textdark ">Experties</span>
-            {userData.Experties &&
-              userData.Experties.map((expertise) => (
+            {userData.Expertise &&
+              userData.Expertise.map((expertise) => (
                 <span key={expertise} className="flex bg-richtextdark p-2 rounded-lg text-textdark ">{expertise}</span>
               ))}
           </div>
           <p className="border border-border p-4 rounded-xl text-xl w-fit  mt text-textdark">
             {userData.bio}
           </p>
-
+          <Addfriend uid={userData.id!}/>
           <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col flex-1 gap-5">
               <div className="p-4 border rounded-xl flex flex-col gap-5">

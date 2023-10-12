@@ -31,7 +31,7 @@ const Mainserachpage = () => {
         console.error("Error fetching data:", error);
       }
     };
-
+    
     fetchData();
   }, []);
   
