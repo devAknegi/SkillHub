@@ -35,9 +35,9 @@ const Mainserachpage = () => {
 
     fetchData();
   }, []);
-
+  
   return (
-    <div className="mainsearch grid h-screen w-screen">
+    <div className="mainsearch grid h-screen w-screen overflow-hidden bg-bgdark">
       <div className="flex items-center justify-between p-5">
         <i className="text-4xl text-textdark">
           <RiProfileLine />
