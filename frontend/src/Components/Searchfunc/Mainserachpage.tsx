@@ -1,7 +1,6 @@
 
 import "../../index.css"; //to implement grid coz tailwind sucks when it come to grid layouts
 import {
-  RiH1,
   RiProfileLine,
   RiUser2Fill,
   RiSearchEyeLine,
@@ -16,8 +15,8 @@ type ProfileData = {
   skills?: string[];
   phone?: string;
   email?: string;
-  username?: String;
-  Experties?: String[];
+  username?: string;
+  Experties?: string[];
 };
 
 const Mainserachpage = () => {
@@ -39,19 +38,22 @@ const Mainserachpage = () => {
   return (
     <div className="mainsearch grid h-screen w-screen overflow-hidden bg-bgdark">
       <div className="flex items-center justify-between p-5">
-        <i className="text-4xl text-textdark">
-          <RiProfileLine />
-        </i>
+        <Link to="/">
+          <i className="text-4xl text-textdark">
+            <RiProfileLine />
+          </i>
+        </Link>
         <div className="flex gap-2 justify-center items-center">
           <h1 className="text-3xl text-textdark">Find your </h1>
-          <span className="text-richtextdark flex text-3xl">
-            {" "}
-            bitBuddies <RiSearchEyeLine />
+          <span className="text-richtextdark flex text-3xl relative group">
+            bitBuddies <i className="absolute w-full h-0.5 bg-richtextdark bottom-0 transform origin-bottom scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+            <RiSearchEyeLine />
           </span>
+          
         </div>
       </div>
       <div className=" filters grid  border-t-2 border-border">
-        <Outlet/>
+        <Outlet />
         <div className="border-border border-t-1 border-l flex flex-col ">
           <h1 className="text-textdark text-center text-2xl border-b border-border p-4 ">
             bitBuddies Available :{" "}

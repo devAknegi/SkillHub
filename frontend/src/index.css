@@ -8,6 +8,7 @@
     --black: #090302;
     --orange: #ff6b00;
     --white: #ffffff;
+    --lightblue: #60a5fa;
 }
 
 *,*::after,::before{
@@ -97,4 +98,33 @@ body{
     background: var(--white);
     inset: 0;
     margin : auto;
+  }
+  
+  
+@layer base {
+    th,
+    td {
+      padding: 0.75rem 0.625rem; 
+      font-size: 0.875rem; 
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    thead {
+      background-color: #f7fafc; 
+    }
+    
+    th {
+      font-weight: 600; 
+    }
+    
+    a {
+      color: var(--lightblue);
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline; 
+    }
+    
   }
