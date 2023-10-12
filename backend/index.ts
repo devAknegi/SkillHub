@@ -1,5 +1,6 @@
 import express from 'express';
 import users from './routes/users.ts';
+import user from './routes/getsignleuser.ts'
 import cors from "cors"
 const app = express();
 const PORT = process.env.PORT || 5171;
@@ -8,9 +9,12 @@ app.use(cors());
 
 app.use('/api', users);
 
+app.use("/api",user)
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 
 
