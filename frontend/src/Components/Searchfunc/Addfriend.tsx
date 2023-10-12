@@ -1,5 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
-import { selectSession } from "../../Store/features/authSlice";
 import { useEffect, useState } from "react";
 import { SupabaseClient, createClient } from "@supabase/supabase-js";
 

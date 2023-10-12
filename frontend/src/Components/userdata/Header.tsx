@@ -1,17 +1,19 @@
-import { Fragment } from 'react';
-import { Menu, Popover, Transition } from '@headlessui/react';
-import {  HiOutlineSearch, HiChatAlt} from 'react-icons/hi';
-import {MdOutlineNotificationsActive} from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
-import classNames from 'classnames'
-
+import { Fragment } from "react";
+import { Menu, Popover, Transition } from "@headlessui/react";
+import { HiOutlineSearch, HiChatAlt } from "react-icons/hi";
+import { MdOutlineNotificationsActive } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import classNames from "classnames";
 
 function Header() {
   const navigate = useNavigate();
   return (
     <div className="bg-neutral-900 h-16 px-4 flex items-center border-b border-gray-200 justify-between">
       <div className="relative">
-        <HiOutlineSearch fontSize={20} className="text-gray-400 absolute top-1/2 left-3 -translate-y-1/2" />
+        <HiOutlineSearch
+          fontSize={20}
+          className="text-gray-400 absolute top-1/2 left-3 -translate-y-1/2"
+        />
         <input
           type="text"
           placeholder="Search..."
@@ -24,11 +26,11 @@ function Header() {
             <>
               <Popover.Button
                 className={classNames(
-                  open && 'bg-gray-100',
-                  'group inline-flex items-center rounded-sm p-1.5 text-gray-700 hover:text-opacity-100 focus:outline-none active:bg-gray-100'
+                  open && "bg-gray-100",
+                  "group inline-flex items-center rounded-sm p-1.5 text-gray-700 hover:text-opacity-100 focus:outline-none active:bg-gray-100"
                 )}
               >
-                < HiChatAlt fontSize={24} />
+                <HiChatAlt fontSize={24} />
               </Popover.Button>
               <Transition
                 as={Fragment}
@@ -41,8 +43,12 @@ function Header() {
               >
                 <Popover.Panel className="absolute right-0 z-10 mt-2.5 transform w-80">
                   <div className="bg-white rounded-sm shadow-md ring-1 ring-black ring-opacity-5 px-2 py-2.5">
-                    <strong className="text-gray-700 font-medium">Messages</strong>
-                    <div className="mt-2 py-1 text-sm">This is the messages panel.</div>
+                    <strong className="text-gray-700 font-medium">
+                      Messages
+                    </strong>
+                    <div className="mt-2 py-1 text-sm">
+                      This is the messages panel.
+                    </div>
                   </div>
                 </Popover.Panel>
               </Transition>
@@ -54,8 +60,8 @@ function Header() {
             <>
               <Popover.Button
                 className={classNames(
-                  open && 'bg-gray-100',
-                  'group inline-flex items-center rounded-sm p-1.5 text-gray-700 hover:text-opacity-100 focus:outline-none active:bg-gray-100'
+                  open && "bg-gray-100",
+                  "group inline-flex items-center rounded-sm p-1.5 text-gray-700 hover:text-opacity-100 focus:outline-none active:bg-gray-100"
                 )}
               >
                 <MdOutlineNotificationsActive fontSize={24} />
@@ -71,8 +77,12 @@ function Header() {
               >
                 <Popover.Panel className="absolute right-0 z-10 mt-2.5 transform w-80">
                   <div className="bg-white rounded-sm shadow-md ring-1 ring-black ring-opacity-5 px-2 py-2.5">
-                    <strong className="text-gray-700 font-medium">Notifications</strong>
-                    <div className="mt-2 py-1 text-sm">This is the notification panel.</div>
+                    <strong className="text-gray-700 font-medium">
+                      Notifications
+                    </strong>
+                    <div className="mt-2 py-1 text-sm">
+                      This is the notification panel.
+                    </div>
                   </div>
                 </Popover.Panel>
               </Transition>
@@ -85,7 +95,10 @@ function Header() {
               <span className="sr-only">Open user menu</span>
               <div
                 className="h-10 w-10 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center"
-                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW9kZWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60")' }}
+                style={{
+                  backgroundImage:
+                    'url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW9kZWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60")',
+                }}
               >
                 <span className="sr-only"></span>
               </div>
@@ -104,10 +117,10 @@ function Header() {
               <Menu.Item>
                 {({ active }) => (
                   <div
-                    onClick={() => navigate('/dashboard')}
+                    onClick={() => navigate("/dashboard")}
                     className={classNames(
-                      active && 'bg-gray-100',
-                      'active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200'
+                      active && "bg-gray-100",
+                      "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200"
                     )}
                   >
                     Your Profile
@@ -118,8 +131,8 @@ function Header() {
                 {({ active }) => (
                   <div
                     className={classNames(
-                      active && 'bg-gray-100',
-                      'active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200'
+                      active && "bg-gray-100",
+                      "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200"
                     )}
                   >
                     Sign out
