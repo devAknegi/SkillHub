@@ -6,8 +6,8 @@ type ProfileData = {
   skills?: string[];
   phone?: string;
   email?: string;
-  username?:String;
-  Experties?:String[]
+  username?:string;
+  Experties?:string[];
 };
 
 const Dashboard = () => {

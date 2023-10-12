@@ -127,7 +127,7 @@ const Nav = () => {
         <div className="flex gap-4">
           <div className="img p-2 h-full w-fit flex gap-1 items-center ">
             <img src="/logo.png" alt="scg" className="h-full w-14" />
-            <h1 className="text-textdark text-2xl">SkillHub</h1>
+            <h1 className="text-textdark text-2xl hover:underline">SkillHub</h1>
           </div>
           {sessionData?.access_token && (
             <div className="links flex items-center">
