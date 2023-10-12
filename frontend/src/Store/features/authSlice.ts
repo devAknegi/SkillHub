@@ -1,6 +1,7 @@
 // authSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Session } from '@supabase/supabase-js';
+import { RootState } from '../store';
 
 interface AuthState {
   session: Session | null;
@@ -24,5 +25,5 @@ const authSlice = createSlice({
 });
 
 export const { setSession, clearSession } = authSlice.actions;
-export const selectSession = (state: { auth: AuthState }): Session | null => state.auth.session;
+export const selectSession = (state: RootState): Session | null => state.auth.session;
 export default authSlice.reducer;

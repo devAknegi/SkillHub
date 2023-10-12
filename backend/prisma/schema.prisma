@@ -13,7 +13,14 @@ model profiles {
   bio          String?
   skills       String[]
   email        String   @unique @db.VarChar
-  phone_number String?
+  phone_number Decimal? @db.Decimal
   username     String
-  Experties    String[]
+  Expertise    String[]
+}
+
+model friends {
+  id     String  @id @db.Uuid
+  uid1   String? @db.Uuid
+  uid2   String? @db.Uuid
+  status Boolean
 }

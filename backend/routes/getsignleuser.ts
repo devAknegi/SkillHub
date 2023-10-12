@@ -9,6 +9,7 @@ app.use(cors());
 const router = express.Router();
 
 router.get("/user/:id", async (req,res)=>{
+
     const {id} = (req.params);
     const filter = id.toString()
     const data = await prisma.profiles.findFirst({
@@ -16,6 +17,7 @@ router.get("/user/:id", async (req,res)=>{
             id:filter
         }
     })
+
     res.json(data);
 })
 
