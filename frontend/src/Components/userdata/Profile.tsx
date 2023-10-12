@@ -11,5 +11,3 @@ function Profile() {
 }
 
 export default Profile;
-
-iska kya kre fir delete??

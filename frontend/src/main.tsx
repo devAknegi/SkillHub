@@ -10,7 +10,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Landing from './Components/Landing.tsx'
-import Dashboard from './Components/userdata/Dashboard.tsx'
+// import Dashboard from './Components/userdata/Dashboard.tsx'
 import Mainserachpage from './Components/Searchfunc/Mainserachpage.tsx'
 import Filters from './Components/Searchfunc/Filters.tsx'
 import Profile from './Components/Searchfunc/Profile.tsx'
