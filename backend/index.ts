@@ -6,6 +6,7 @@ import check from "./routes/checkreq.ts"
 import pending from "./routes/fetchpendingreq.ts"
 import acceptrequest from "./routes/acceptrequest.ts"
 import removerequest from "./routes/removereq.ts"
+import accepted from "./routes/fetchacceptedreq.ts"
 import cors from "cors"
 
 const app = express();
@@ -28,6 +29,7 @@ app.use("/api",check)
 
 app.use("/api",pending)
 
+app.use("/api",accepted)
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
