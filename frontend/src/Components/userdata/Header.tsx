@@ -1,14 +1,55 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { HiOutlineSearch, HiChatAlt } from "react-icons/hi";
 import { MdOutlineNotificationsActive } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { selectSession } from "../Store/Slices/authSlice";
+import { Session } from '@supabase/supabase-js';
+
+type UserData =
+  | {
+      id?: string;
+      name?: string;
+      bio?: string;
+      skills?: string[];
+      email?: string;
+      Expertise?: string[];
+      phone_number?: string;
+      username?: string;
+    }[]
+  | [];
 
 function Header() {
+  const [session,setsession] = useState<Session | null>(null)
+  const sessionData = useSelector(selectSession);
+  useEffect(()=>{
+    setsession(sessionData)
+  },[])
+
+  const [pendingreq, setprendingreq] = useState<UserData>([]);
+  const id = session?.user.id;
+  
+  const seenotifications = async () => {
+    const response = await fetch(
+      `http://localhost:5171/api/getpendingreq/${id}`
+    );
+
+    const data = await response.json();
+    console.log(data.profiles);
+    setprendingreq(data.profiles);
+  };
+  useEffect(()=>{
+    seenotifications()
+  },[])
+  
+
+
+  
   const navigate = useNavigate();
   return (
-    <div className="bg-neutral-900 h-16 px-4 flex items-center border-b border-gray-200 justify-between">
+    <div className="bg-bgdark h-16 px-4 flex items-center border-b border-gray-200 justify-between">
       <div className="relative">
         <HiOutlineSearch
           fontSize={20}
@@ -30,6 +71,8 @@ function Header() {
                   "group inline-flex items-center rounded-sm p-1.5 text-gray-700 hover:text-opacity-100 focus:outline-none active:bg-gray-100"
                 )}
               >
+
+              
                 <HiChatAlt fontSize={24} />
               </Popover.Button>
               <Transition
@@ -59,12 +102,14 @@ function Header() {
           {({ open }) => (
             <>
               <Popover.Button
+                onClick={seenotifications}
                 className={classNames(
                   open && "bg-gray-100",
                   "group inline-flex items-center rounded-sm p-1.5 text-gray-700 hover:text-opacity-100 focus:outline-none active:bg-gray-100"
                 )}
               >
-                <MdOutlineNotificationsActive fontSize={24} />
+                <MdOutlineNotificationsActive fontSize={24} />{" "}
+                {pendingreq?pendingreq.length:0}
               </Popover.Button>
               <Transition
                 as={Fragment}
@@ -75,13 +120,28 @@ function Header() {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
               >
-                <Popover.Panel className="absolute right-0 z-10 mt-2.5 transform w-80">
-                  <div className="bg-white rounded-sm shadow-md ring-1 ring-black ring-opacity-5 px-2 py-2.5">
+                <Popover.Panel className="absolute right-0 z-10 mt-3.5 transform w-80">
+                  <div className="bg-white rounded-sm shadow-md ring-1 ring-black ring-opacity-5 px-2 py-2.5  ">
                     <strong className="text-gray-700 font-medium">
-                      Notifications
+                      bitBuddy Requests
                     </strong>
-                    <div className="mt-2 py-1 text-sm">
-                      This is the notification panel.
+                    <div className="mt-3 text-sm flex flex-col gap-3">
+                      {pendingreq && pendingreq.length > 0 ? (
+                        pendingreq.map((e) => (
+                          <div key={e.id} className="border border-border rounded-xl ">
+                            <div className="flex p-2 gap-2 ">
+                              <h1 className="capitalize">{e.name}</h1>
+                              <h1 className="text-richtextdark hover:underline hover:cursor-pointer">{e.username}</h1>
+                            </div>
+                            <div className="flex p-2 justify-around">
+                              <button className="border hover:border-green-400 hover:border p-2 rounded-xl text-green-400">Add</button>
+                              <button className="border hover:border-red-700  hover:border p-2 rounded-xl text-red-700">remove</button>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <h1>no bitbuddy requests</h1>
+                      )}
                     </div>
                   </div>
                 </Popover.Panel>

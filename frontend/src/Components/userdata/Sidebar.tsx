@@ -10,8 +10,9 @@ import {
   HiOutlineCog,
   HiOutlineLogout,
 } from "react-icons/hi";
+import { handleSignOut } from "../supabase/helpers";
 
-const SidebarLink = [
+export const SidebarLink = [
   {
     key: "dashboard",
     label: "Dashboard",
@@ -44,7 +45,7 @@ const SidebarLink = [
   },
 ];
 
-const SidebarBottomLink = [
+export const SidebarBottomLink = [
   {
     key: "settings",
     label: "Settings",
@@ -83,10 +84,10 @@ function SidebarOptionsLink({ link }: { link: any }) {
 }
 export default function Sidebar() {
   return (
-    <div className="bg-neutral-900 w-60 p-3 flex flex-col">
-      <div className="flex items-center gap-2 px-1 py-3">
+    <div className="bg-bgdark w-60 p-3 flex flex-col">
+      <div className="flex items-center gap-2 px-1">
         <img src="/logo.png" alt="scg" className="h-12 w-12" />
-        <span className="text-neutral-200 text-lg">SkillHub</span>
+        <span className="text-textdark text-lg">SkillHub</span>
       </div>
       <div className="py-8 flex flex-1 flex-col gap-0.5">
         {SidebarLink.map((link) => (
@@ -97,7 +98,9 @@ export default function Sidebar() {
         {SidebarBottomLink.map((link) => (
           <SidebarOptionsLink key={link.key} link={link} />
         ))}
-        <div className={classNames(linkClass, "cursor-pointer text-red-500")}>
+        <div className={classNames(linkClass, "cursor-pointer text-red-500")} onClick={ async ()=>{
+           await handleSignOut()
+          }}>
           <span className="text-xl">
             <HiOutlineLogout />
           </span>

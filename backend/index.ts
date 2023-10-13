@@ -3,6 +3,7 @@ import users from './routes/users.ts';
 import user from './routes/getsignleuser.ts'
 import friendrequest from "./routes/Friendreq.ts"
 import check from "./routes/checkreq.ts"
+import pending from "./routes/fetchpendingreq.ts"
 import cors from "cors"
 
 const app = express();
@@ -18,6 +19,9 @@ app.use("/api",user)
 app.use("/api",friendrequest)
 
 app.use("/api",check)
+
+app.use("/api",pending)
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
