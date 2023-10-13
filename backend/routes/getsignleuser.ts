@@ -17,7 +17,7 @@ router.get("/user/:id", async (req,res)=>{
             id:filter
         }
     })
-
+    
     res.json(data);
 })
 

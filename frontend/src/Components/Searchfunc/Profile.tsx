@@ -32,7 +32,6 @@ const Profile = () => {
 
     fetchData();
   }, [id]);
-
   return (
     <div className="p-5 overflow-y-scroll h-[90vh]">
       {userData && (
