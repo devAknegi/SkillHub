@@ -19,13 +19,13 @@ router.get('/check', async (req, res) => {
                 uid2: reqreciver as string,
             },
             select: {
-                status: true,
+                accepted: true,
             },
         });
 
         if (!result) {
             res.json({ message: 'Add Friend' });
-        } else if (result.status === false) {
+        } else if (result.accepted === false) {
             res.json({ message: 'Pending' });
         } else {
             res.json({ message: 'Friends' });

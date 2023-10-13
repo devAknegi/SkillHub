@@ -4,6 +4,8 @@ import user from './routes/getsignleuser.ts'
 import friendrequest from "./routes/Friendreq.ts"
 import check from "./routes/checkreq.ts"
 import pending from "./routes/fetchpendingreq.ts"
+import acceptrequest from "./routes/acceptrequest.ts"
+import removerequest from "./routes/removereq.ts"
 import cors from "cors"
 
 const app = express();
@@ -17,6 +19,10 @@ app.use('/api', users);
 app.use("/api",user)
 
 app.use("/api",friendrequest)
+
+app.use("/api",removerequest)
+
+app.use("/api",acceptrequest)
 
 app.use("/api",check)
 

@@ -14,7 +14,7 @@ router.get("/getpendingreq/:id", async (req, res) => {
     }
 
     try {
-        const profiles = await prisma.$queryRaw`SELECT * FROM profiles WHERE id IN (SELECT uid1::uuid FROM friends WHERE uid2 = ${id}::uuid)`;      
+        const profiles = await prisma.$queryRaw`SELECT * FROM profiles WHERE id IN (SELECT uid1::uuid FROM friends WHERE uid2 = ${id}::uuid AND accepted = false) `;      
         res.json({ profiles:profiles });
     } catch (error) {
       console.error('Error fetching profiles:', error);

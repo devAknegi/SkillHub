@@ -5,7 +5,6 @@ function Profile() {
   return (
     <Routes>
       <Route index element={<Dashboard />} />
-      {/* Other nested routes if needed */}
     </Routes>
   );
 }

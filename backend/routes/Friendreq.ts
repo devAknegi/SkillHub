@@ -34,7 +34,7 @@ router.post("/friendrequest", async (req, res) => {
                     id: randomUUID(),
                     uid1: reqsender,
                     uid2: reqreciver,
-                    status: false
+                    accepted: false
                 }
 
 

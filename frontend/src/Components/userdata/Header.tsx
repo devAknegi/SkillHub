@@ -4,9 +4,10 @@ import { HiOutlineSearch, HiChatAlt } from "react-icons/hi";
 import { MdOutlineNotificationsActive } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
+
 import { useSelector } from "react-redux";
+import { RootState } from "../Store/store";
 import { selectSession } from "../Store/Slices/authSlice";
-import { Session } from '@supabase/supabase-js';
 
 type UserData =
   | {
@@ -22,31 +23,87 @@ type UserData =
   | [];
 
 function Header() {
-  const [session,setsession] = useState<Session | null>(null)
-  const sessionData = useSelector(selectSession);
-  useEffect(()=>{
-    setsession(sessionData)
-  },[])
+  const [loading, setLoading] = useState(false);
+
+  const session = useSelector((state: RootState) => selectSession(state));
 
   const [pendingreq, setprendingreq] = useState<UserData>([]);
+  
   const id = session?.user.id;
-  
-  const seenotifications = async () => {
-    const response = await fetch(
-      `http://localhost:5171/api/getpendingreq/${id}`
-    );
 
-    const data = await response.json();
-    console.log(data.profiles);
-    setprendingreq(data.profiles);
+  const removefriend = async (uid: string) => {
+    setLoading(true);
+    try {
+      const id2 = session?.user.id;
+      const response = await fetch("http://localhost:5171/api/removerequest", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          reqsender: uid,
+          reqreciver: id2,
+        }),
+      });
+
+      console.log(response);
+    } catch (error) {
+      console.error("Error handling request:", error);
+    } finally {
+      setLoading(false);
+    }
   };
-  useEffect(()=>{
-    seenotifications()
-  },[])
+
+  const acceptfriend = async (uid: string) => {
+    setLoading(true);
+    try {
+      const id2 = session?.user.id;
+      const response = await fetch("http://localhost:5171/api/acceptrequest", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          reqsender: uid,
+          reqreciver: id2,
+        }),
+      });
+
+      console.log(response);
+    } catch (error) {
+      console.error("Error handling request:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const seenotifications = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5171/api/getpendingreq/${id}`
+      );
+      const data = await response.json();
+  
+      // Use the functional form of setprendingreq to avoid dependency on the previous state
+      setprendingreq((prevProfiles) => {
+        // Only update if there's a change in profiles to avoid unnecessary re-renders
+        if (JSON.stringify(prevProfiles) !== JSON.stringify(data.profiles)) {
+          return data.profiles;
+        }
+        return prevProfiles;
+      });
+    } catch (error) {
+      console.error("Error fetching notifications:", error);
+    }
+  };
   
 
 
-  
+  useEffect(() => {
+    seenotifications();
+  }, [removefriend,acceptfriend]);
+
+
   const navigate = useNavigate();
   return (
     <div className="bg-bgdark h-16 px-4 flex items-center border-b border-gray-200 justify-between">
@@ -71,8 +128,6 @@ function Header() {
                   "group inline-flex items-center rounded-sm p-1.5 text-gray-700 hover:text-opacity-100 focus:outline-none active:bg-gray-100"
                 )}
               >
-
-              
                 <HiChatAlt fontSize={24} />
               </Popover.Button>
               <Transition
@@ -109,7 +164,7 @@ function Header() {
                 )}
               >
                 <MdOutlineNotificationsActive fontSize={24} />{" "}
-                {pendingreq?pendingreq.length:0}
+                {pendingreq ? pendingreq.length : 0}
               </Popover.Button>
               <Transition
                 as={Fragment}
@@ -128,14 +183,35 @@ function Header() {
                     <div className="mt-3 text-sm flex flex-col gap-3">
                       {pendingreq && pendingreq.length > 0 ? (
                         pendingreq.map((e) => (
-                          <div key={e.id} className="border border-border rounded-xl ">
+                          <div
+                            key={e.id}
+                            className="border border-border rounded-xl "
+                          >
                             <div className="flex p-2 gap-2 ">
                               <h1 className="capitalize">{e.name}</h1>
-                              <h1 className="text-richtextdark hover:underline hover:cursor-pointer">{e.username}</h1>
+                              <h1 className="text-richtextdark hover:underline hover:cursor-pointer">
+                                {e.username}
+                              </h1>
                             </div>
                             <div className="flex p-2 justify-around">
-                              <button className="border hover:border-green-400 hover:border p-2 rounded-xl text-green-400">Add</button>
-                              <button className="border hover:border-red-700  hover:border p-2 rounded-xl text-red-700">remove</button>
+                              <button
+                                className="border hover:border-green-400 hover:border p-2 rounded-xl text-green-400"
+                                onClick={() => {
+                                  acceptfriend(e.id!);
+                                }}
+                              >
+                                {" "}
+                                {loading ? "laoding" : "add"}{" "}
+                              </button>
+                              <button
+                                className="border hover:border-red-700  hover:border p-2 rounded-xl text-red-700"
+                                onClick={() => {
+                                  removefriend(e.id!);
+                                }}
+                              >
+                                {" "}
+                                {loading ? "laoding" : "remove"}{" "}
+                              </button>
                             </div>
                           </div>
                         ))

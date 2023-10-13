@@ -19,8 +19,8 @@ model profiles {
 }
 
 model friends {
-  id     String  @id @db.Uuid
-  uid1   String? @db.Uuid
-  uid2   String? @db.Uuid
-  status Boolean
+  id       String  @id @db.Uuid
+  uid1     String? @db.Uuid
+  uid2     String? @db.Uuid
+  accepted Boolean
 }
