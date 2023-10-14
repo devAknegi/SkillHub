@@ -9,17 +9,10 @@ import {
   HiOutlineQuestionMarkCircle,
   HiOutlineCog,
   HiOutlineLogout,
-  HiOutlineHome
 } from "react-icons/hi";
 import { handleSignOut } from "../supabase/helpers";
 
 export const SidebarLink = [
-  {
-    key: "Home",
-    label: "Home",
-    path: "/",
-    icon: <HiOutlineHome />,
-  },
   {
     key: "dashboard",
     label: "Dashboard",
@@ -41,7 +34,7 @@ export const SidebarLink = [
   {
     key: "messages",
     label: "Messages",
-    path: "/",
+    path: "/dashboard/messages",
     icon: <HiOutlineAnnotation />,
   },
   {
@@ -71,7 +64,6 @@ const linkClass =
   "flex items-center gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base";
 
 function SidebarOptionsLink({ link }: { link: any }) {
-  //bro correct the type of this for now i have used any
   const { pathname } = useLocation();
 
   return (
@@ -91,12 +83,15 @@ function SidebarOptionsLink({ link }: { link: any }) {
 }
 export default function Sidebar() {
   return (
-    <div className="bg-bgdark w-45 p-4 flex flex-col border-r">
-      <div className="flex items-center gap-2 px-5 ">
-        <img src="/logo.png" alt="scg" className="h-12 w-12" />
-        <span className="text-textdark text-lg font-bold">SkillHub</span>
-      </div>
-      <div className="py-8 flex flex-1 flex-col gap-0.5 border-t border-neutral-700">
+    <div className="bg-bgdark w-60 h-screen flex flex-col border-r border-border">
+      <Link to={"/"} className="border-b border-border">
+        <div className="flex items-center justify-center gap-2 p-2 ">
+          <img src="/logo.png" alt="scg" className="h-10 w-10" />
+          <span className="text-textdark font-bold text-lg">SkillHub</span>
+        </div>
+      </Link>
+      
+      <div className="py-8 flex flex-1 flex-col gap-0.5">
         {SidebarLink.map((link) => (
           <SidebarOptionsLink key={link.key} link={link} />
         ))}
@@ -106,9 +101,12 @@ export default function Sidebar() {
         {SidebarBottomLink.map((link) => (
           <SidebarOptionsLink key={link.key} link={link} />
         ))}
-        <div className={classNames(linkClass, "cursor-pointer text-red-500")} onClick={ async ()=>{
-           await handleSignOut()
-          }}>
+        <div
+          className={classNames(linkClass, "cursor-pointer text-red-500")}
+          onClick={async () => {
+            await handleSignOut();
+          }}
+        >
           <span className="text-xl">
             <HiOutlineLogout />
           </span>
