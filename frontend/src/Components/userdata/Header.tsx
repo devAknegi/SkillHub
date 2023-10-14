@@ -35,7 +35,7 @@ function Header() {
     setLoading(true);
     try {
       const id2 = session?.user.id;
-      const response = await fetch("https://skillhub-584r.onrender.com/api/removerequest", {
+      const response = await fetch("http://localhost:5171/api/removerequest", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +58,7 @@ function Header() {
     setLoading(true);
     try {
       const id2 = session?.user.id;
-      const response = await fetch("https://skillhub-584r.onrender.com/api/acceptrequest", {
+      const response = await fetch("http://localhost:5171/api/acceptrequest", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +80,7 @@ function Header() {
   const seenotifications = async () => {
     try {
       const response = await fetch(
-        `https://skillhub-584r.onrender.com/api/getpendingreq/${id}`
+        `http://localhost:5171/api/getpendingreq/${id}`
       );
       const data = await response.json();
 
@@ -100,7 +100,7 @@ function Header() {
   const seefriends = async () => {
     try {
       const response = await fetch(
-        `https://skillhub-584r.onrender.com/api/getacceptedreq/${id}`
+        `http://localhost:5171/api/getacceptedreq/${id}`
       );
       const data = await response.json();
 

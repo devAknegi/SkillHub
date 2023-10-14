@@ -4,14 +4,7 @@ import cors from "cors"
 const app = express()
 
 app.use(express.json())
-const corsOptions = {
-    origin: 'https://skillhub-584r.onrender.com',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204,
-  };
-  
-  app.use(cors(corsOptions));
+app.use(cors());
 
 const router = express.Router();
 
