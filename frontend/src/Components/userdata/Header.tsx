@@ -183,7 +183,7 @@ function Header() {
                           </div>
                         ))
                       ) : (
-                        <h1>no bitbuddy requests</h1>
+                        <h1>No bitbuddy requests</h1>
                       )}
                     </div>
                   </div>
@@ -218,7 +218,7 @@ function Header() {
                       Messages
                     </strong>
                     <div className="mt-2 py-1 text-sm">
-                      This is the messages panel.
+                      No Messages.
                     </div>
                   </div>
                 </Popover.Panel>
@@ -252,7 +252,7 @@ function Header() {
                 <Popover.Panel className="absolute right-0 z-10 mt-3.5 transform w-80">
                   <div className="bg-white rounded-sm shadow-md ring-1 ring-black ring-opacity-5 px-2 py-2.5  ">
                     <strong className="text-gray-700 font-medium">
-                      bitBuddy Requests
+                      Notifications
                     </strong>
                     <div className="mt-3 text-sm flex flex-col gap-3">
                       {pendingreq && pendingreq.length > 0 ? (
@@ -290,7 +290,7 @@ function Header() {
                           </div>
                         ))
                       ) : (
-                        <h1>no bitbuddy requests</h1>
+                        <h1>No Notification.</h1>
                       )}
                     </div>
                   </div>
@@ -327,9 +327,9 @@ function Header() {
               <Menu.Item>
                 {({ active }) => (
                   <div
-                    onClick={() => navigate("/dashboard")}
+                    onClick={() => navigate("/Profile")}
                     className={classNames(
-                      active && "bg-gray-100",
+                      active && "bg-gray-300",
                       "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200"
                     )}
                   >
@@ -341,7 +341,7 @@ function Header() {
                 {({ active }) => (
                   <div
                     className={classNames(
-                      active && "bg-gray-100",
+                      active && "bg-gray-300",
                       "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200"
                     )}
                   >

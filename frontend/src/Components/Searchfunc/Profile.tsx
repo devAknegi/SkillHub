@@ -11,7 +11,6 @@ type UserData = {
   Expertise?: string[];
   phone_number?: string;
   username?: string;
-  // Add other properties as needed
 };
 
 const Profile = () => {

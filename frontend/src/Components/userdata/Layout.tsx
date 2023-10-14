@@ -12,9 +12,9 @@ function Layout() {
   const sessionData = useSelector(selectSession);
   console.table(router.Navigate)
   return sessionData?.access_token?(
-    <div className="bg-neutral-100 h-screen w-screen overflow-hidden flex flex-row">
+    <div className="bg-bgblack  h-screen w-screen overflow-hidden flex flex-row ">
       <Sidebar />
-      <div className="flex flex-col flex-1">
+      <div className=" flex flex-col flex-1">
         <Header />
         <div className="flex-1 p-4 min-h-0 overflow-auto">
           <Outlet />
