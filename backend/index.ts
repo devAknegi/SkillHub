@@ -12,14 +12,9 @@ import cors from "cors"
 const app = express();
 const PORT = process.env.PORT || 5171;
 
-const corsOptions = {
-  origin: 'https://skillhub-584r.onrender.com',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
 
-app.use(cors(corsOptions));
+
+app.use(cors());
 app.use(express.json())
 
 app.use('/api', users);
