@@ -24,3 +24,11 @@ model friends {
   uid2     String? @db.Uuid
   accepted Boolean
 }
+
+model messages {
+  id          String    @id @db.Uuid
+  sender_id   String?   @db.Uuid
+  receiver_id String?   @db.Uuid
+  message     String?
+  created_at  DateTime? @default(now()) @db.Timestamptz(6)
+}
