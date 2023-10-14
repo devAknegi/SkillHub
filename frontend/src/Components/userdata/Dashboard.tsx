@@ -15,7 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5171/api/users");
+        const response = await fetch("https://skillhub-584r.onrender.com/api/users");
         const data = await response.json();
         setusers(data);
       } catch (error) {
