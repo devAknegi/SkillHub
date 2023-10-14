@@ -2,6 +2,8 @@
 import express from 'express';
 import prisma from '../prisma/prisma.ts';
 
+
+
 const router = express.Router();
 
 router.get('/check', async (req, res) => {
