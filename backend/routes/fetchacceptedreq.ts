@@ -3,7 +3,14 @@ import prisma from "../prisma/prisma.ts"
 import cors from "cors"
 
 const app = express()
-app.use(cors)
+const corsOptions = {
+    origin: 'https://skillhub-584r.onrender.com',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+  };
+  
+  app.use(cors(corsOptions));
 const router = express.Router()
 
 router.get("/getacceptedreq/:id", async (req, res) => {

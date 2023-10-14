@@ -4,8 +4,17 @@ import prisma from "../prisma/prisma.ts"
 import cors from "cors"
 import { randomUUID } from "crypto"
 
+
+
 const app = express()
-app.use(cors)
+const corsOptions = {
+    origin: 'https://skillhub-584r.onrender.com',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+  };
+  
+  app.use(cors(corsOptions));
 const router = express.Router()
 
 router.post("/acceptrequest", async (req, res) => {
