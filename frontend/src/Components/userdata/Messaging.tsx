@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { selectSession } from "../Store/Slices/authSlice";
 import { RootState } from "../Store/store";
 import { useSelector } from "react-redux";
@@ -27,7 +27,8 @@ const Messaging = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
   const [selectedFriendId, setSelectedFriendId] = useState<string | null>(null);
-  const session = useSelector((state: RootState) => selectSession(state));
+  const session = useSelector((state: RootState) => selectSession(state));4
+  const messagesContainerRef = useRef<HTMLDivElement | null>(null);
   const id = session?.user.id;
   const socket = io("http://localhost:3001");
 
@@ -42,6 +43,17 @@ const Messaging = () => {
       console.error("Error fetching messages:", error);
     }
   };
+
+  const scrollToBottom = () => {
+    if (messagesContainerRef.current) {
+      const container = messagesContainerRef.current;
+      container.scrollTop = container.scrollHeight;
+    }
+  };
+
+  useEffect(()=>{
+    scrollToBottom();
+  } , [messages])
 
   useEffect(() => {
     const fetchFriends = async () => {
@@ -96,12 +108,12 @@ const Messaging = () => {
       style={{ gridTemplateColumns: "8fr 3fr" }}
     >
       <div
-        className="border-r border-border grid "
-        style={{ gridTemplateRows: "8fr 1fr" }}
+        className="border-r border-border h-[93vh] grid "
+        style={{ gridTemplateRows: "8fr 1.5fr" }}
       >
         {selectedFriendId && (
           <>
-            <div className="flex flex-col overflow-y-scroll p-2 w-full gap-3 ">
+            <div  ref={messagesContainerRef} className="flex flex-col overflow-y-scroll p-2 scroll-smooth  w-full gap-3 ">
               {messages.map((msg) => (
                 <div key={msg.id} className="w-full relative px-5">
                   {id && msg.sender_id === id ? (
@@ -116,7 +128,7 @@ const Messaging = () => {
                 </div>
               ))}
             </div>
-            <div className="flex w-full h-full border-t border-border p-4 justify-center gap-10 items-center">
+            <div className="flex w-full h-full shrink-0 border-t border-border p-4 justify-center gap-10 items-center">
               <input
                 type="text"
                 value={newMessage}
