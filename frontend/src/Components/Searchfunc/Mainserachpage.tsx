@@ -16,7 +16,7 @@ type ProfileData = {
   phone?: string;
   email?: string;
   username?: string;
-  Experties?: string[];
+  Expertise?: string[];
 };
 
 const Mainserachpage = () => {

@@ -10,11 +10,11 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Landing from './Components/primarycomponents/Landing.tsx'
-// import Dashboard from './Components/userdata/Dashboard.tsx'
 import Mainserachpage from './Components/Searchfunc/Mainserachpage.tsx'
 import Filters from './Components/Searchfunc/Filters.tsx'
 import Profile from './Components/Searchfunc/Profile.tsx'
 import Layout from './Components/userdata/Layout.tsx'
+import MainProfile from './Components/userdata/MainProfile.tsx'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
   ,{
     path:"/dashboard",
     element:<Layout />
+  }
+  ,{
+    path:"/Profile",
+    element:<MainProfile />
   },
 
   {
