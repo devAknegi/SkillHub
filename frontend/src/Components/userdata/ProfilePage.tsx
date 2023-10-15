@@ -32,7 +32,7 @@ const ProfilePage = () => {
   }, [id]);
 
   return (
-    <div className="bg-black text-orange-500 min-h-screen flex">
+    <div className="bg-black text-richtextdark min-h-screen flex">
       {userData && (
         <div className="flex-1 p-8">
           <section className="mt-8">

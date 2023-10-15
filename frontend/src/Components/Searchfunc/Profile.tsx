@@ -33,67 +33,60 @@ const Profile = () => {
   }, [id]);
   return (
     <div className="p-5 overflow-y-scroll h-[90vh]">
-      {userData && (
-        <div className="flex gap-5 flex-col">
-          <div className="flex gap-4 items-baseline">
-            <p className="text-textdark text-7xl font-bold ">
-              {userData.name}{" "}
-            </p>
-            <p className="text-4xl text-textdark">
-              Originally known as{" "}
-              <span className="text-richtextdark">{userData.username}</span>
-            </p>
-          </div>
-          <div className="border border-border  p-4 flex gap-3 items-center rounded-full ">
-            <span className="text-4xl text-textdark ">Experties</span>
-            {userData.Expertise &&
-              userData.Expertise.map((expertise) => (
-                <span key={expertise} className="flex bg-richtextdark p-2 rounded-lg text-textdark ">{expertise}</span>
-              ))}
-          </div>
-          <p className="border border-border p-4 rounded-xl text-xl w-fit  mt text-textdark">
-            {userData.bio}
-          </p>
-          <Addfriend uid={userData.id!}/>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="flex flex-col flex-1 gap-5">
-              <div className="p-4 border rounded-xl flex flex-col gap-5">
-                <h1 className="text-textdark text-2xl font-bold">contacts</h1>
-                <p className="text-richtextdark text-xl border border-border rounded-xl p-2 pl-1 ">
-                  <span className="font-semibold text-textdark">Email:</span>{" "}
-                  {userData.email}
-                </p>
-                <p className="text-richtextdark text-xl border border-border rounded-xl p-2 pl-1 ">
-                  <span className="font-semibold text-textdark">Phone:</span>{" "}
-                  {userData.phone_number}
-                </p>
-              </div>
+  {userData && (
+    <div className="flex flex-col gap-5">
+      <div className="flex gap-4 items-baseline">
+        <p className="text-4xl font-bold text-textdark">{userData.name}</p>
+        <p className="text-xl text-textdark">Originally known as <span className="text-richtextdark">{userData.username}</span></p>
+      </div>
+      
+      <div className="border border-border p-4 flex gap-3 items-center rounded-full">
+        <span className="text-xl font-bold text-textdark">Expertise</span>
+        {userData.Expertise &&
+          userData.Expertise.map((expertise) => (
+            <span key={expertise} className="flex bg-richtextdark p-2 rounded-lg text-textdark">{expertise}</span>
+          ))}
+      </div>
 
-              <div className="p-4 border rounded-xl flex flex-col gap-5 w-fit">
-                <span className="text-textdark text-2xl font-bold">
-                  Skills:
-                </span>{" "}
-                <div className=" gap-3 flex flex-col w-fit">
-                  {userData.skills &&
-                    userData.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className=" text-xl text-textdark m-3 capitalize"
-                      >
-                        {" "}
-                        - {skill} <br />{" "}
-                      </span>
-                    ))}
-                </div>
-              </div>
-            </div>
-            <div className="flex justify-center items-center border rounded-xl">
-              <h1 className="text-textdark">profile here and activity here </h1>
+      <p className="border border-border p-4 rounded-xl text-xl text-textdark my-4">
+        {userData.bio}
+      </p>
+
+      <Addfriend uid={userData.id!} />
+
+      <div className="grid grid-cols-2 gap-5">
+        <div className="flex flex-col gap-5">
+          <div className="p-4 border rounded-xl flex flex-col gap-5">
+            <h1 className="text-2xl font-bold text-textdark">Contacts</h1>
+            <p className="text-xl border border-border rounded-xl p-2 pl-1 text-richtextdark">
+              <span className="font-semibold text-textdark">Email:</span> {userData.email}
+            </p>
+            <p className="text-xl border border-border rounded-xl p-2 pl-1 text-richtextdark">
+              <span className="font-semibold text-textdark">Phone:</span> {userData.phone_number}
+            </p>
+          </div>
+
+          <div className="p-4 border rounded-xl flex flex-col gap-5 w-fit">
+            <span className="text-2xl font-bold text-textdark">Skills:</span>
+            <div className="gap-3 flex flex-col w-fit">
+              {userData.skills &&
+                userData.skills.map((skill) => (
+                  <span key={skill} className="text-xl text-textdark m-3 capitalize">
+                    - {skill} <br />
+                  </span>
+                ))}
             </div>
           </div>
         </div>
-      )}
+
+        <div className="flex justify-center items-center border rounded-xl">
+          <h1 className="text-textdark">Profile and Activity Here</h1>
+        </div>
+      </div>
     </div>
+  )}
+</div>
+
   );
 };
 

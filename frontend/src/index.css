@@ -59,7 +59,7 @@ body{
     left: -100%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, rgba(233, 92, 16, 0.5), transparent);
+    background: linear-gradient(45deg, #3b83f65f, transparent);
     opacity: 0;
     transform: rotate(45deg);
     transition: opacity 0.3s ease-in-out;
@@ -74,11 +74,11 @@ body{
   }
 
 ::-webkit-scrollbar{
-    background-color: var(--black);
+  background: transparent;
     width: 7px;
 }
 ::-webkit-scrollbar-thumb{
-    background-color: var(--orange);
+    background-color: #3b82f6;
     border-radius: 20px;
 }
 
@@ -86,7 +86,7 @@ body{
     width: 40px;
     height: 100px;
     background: transparent;
-    border: 2px solid var(--orange);
+    border: 2px solid #3b82f6;
     border-radius: 60px;
     position: relative;
   }
@@ -101,30 +101,3 @@ body{
   }
   
   
-@layer base {
-    th,
-    td {
-      padding: 0.75rem 0.625rem; 
-      font-size: 0.875rem; 
-      text-align: left;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    
-    thead {
-      background-color: #f7fafc; 
-    }
-    
-    th {
-      font-weight: 600; 
-    }
-    
-    a {
-      color: var(--lightblue);
-      text-decoration: none;
-    }
-    
-    a:hover {
-      text-decoration: underline; 
-    }
-    
-  }
