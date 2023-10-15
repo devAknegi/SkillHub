@@ -8,14 +8,16 @@ datasource db {
 }
 
 model profiles {
-  id           String   @id(map: "users_pkey") @unique @db.Uuid
-  name         String?
-  bio          String?
-  skills       String[]
-  email        String   @unique @db.VarChar
-  phone_number Decimal? @db.Decimal
-  username     String
-  Expertise    String[]
+  id                                                    String            @id(map: "users_pkey") @unique @db.Uuid
+  name                                                  String?
+  bio                                                   String?
+  skills                                                String[]
+  email                                                 String            @unique @db.VarChar
+  phone_number                                          Decimal?          @db.Decimal
+  username                                              String
+  Expertise                                             String[]
+  skill_exchanges_skill_exchanges_receiver_idToprofiles skill_exchanges[] @relation("skill_exchanges_receiver_idToprofiles")
+  skill_exchanges_skill_exchanges_sender_idToprofiles   skill_exchanges[] @relation("skill_exchanges_sender_idToprofiles")
 }
 
 model friends {
@@ -31,4 +33,16 @@ model messages {
   receiver_id String?   @db.Uuid
   message     String?
   created_at  DateTime? @default(now()) @db.Timestamptz(6)
+}
+
+model skill_exchanges {
+  id                                             String    @id @db.Uuid
+  sender_id                                      String?   @db.Uuid
+  receiver_id                                    String?   @db.Uuid
+  desired_skills                                 String[]
+  accepted                                       Boolean?  @default(false)
+  created_at                                     DateTime? @default(now()) @db.Timestamptz(6)
+  offermessage                                   String?
+  profiles_skill_exchanges_receiver_idToprofiles profiles? @relation("skill_exchanges_receiver_idToprofiles", fields: [receiver_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  profiles_skill_exchanges_sender_idToprofiles   profiles? @relation("skill_exchanges_sender_idToprofiles", fields: [sender_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

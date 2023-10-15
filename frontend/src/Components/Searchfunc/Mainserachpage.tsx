@@ -1,7 +1,10 @@
 import "../../index.css"; //to implement grid coz tailwind sucks when it come to grid layouts
-import { RiProfileLine, RiUser2Fill, RiSearchEyeLine } from "react-icons/ri";
+import { RiProfileLine, RiUser2Fill, RiSearchEyeLine, RiArrowLeftCircleFill, RiHome2Fill } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../Store/store";
+import { selectSession } from "../Store/Slices/authSlice";
 
 type ProfileData = {
   id?: string;
@@ -17,7 +20,8 @@ type ProfileData = {
 const Mainserachpage = () => {
   const [users, setusers] = useState<ProfileData[]>([]);
   const [active, setactive] = useState<string | null>(null);
-
+  const session = useSelector((session:RootState)=>selectSession(session))
+  const id = session?.user.id;
   const [loading, setloading] = useState(false);
 
   useEffect(() => {
@@ -38,12 +42,13 @@ const Mainserachpage = () => {
     setloading(false);
   }, []);
 
+  const filteredarray = users.filter((user)=>user.id!=id)
   return (
     <div className="mainsearch grid h-screen w-screen overflow-hidden bg-bgdark">
       <div className="flex items-center justify-between p-5">
         <Link to="/">
           <i className="text-4xl text-textdark">
-            <RiProfileLine />
+            <RiHome2Fill />
           </i>
         </Link>
         <div className="flex gap-2 justify-center items-center">
@@ -60,12 +65,12 @@ const Mainserachpage = () => {
         <div className="border-border border-t-1 border-l flex flex-col ">
           <h1 className="text-textdark text-center text-2xl border-b border-border p-4 ">
             bitBuddies Available :{" "}
-            <span className="text-richtextdark">{users.length}</span>
+            <span className="text-richtextdark">{filteredarray.length}</span>
           </h1>
           <div className="users h-full overflow-y-scroll flex flex-col gap-2 p-5">
             {!loading ? (
-              Array.isArray(users) && users.length > 0 ? (
-                users.map((e) => (
+              Array.isArray(filteredarray) && filteredarray.length > 0 ? (
+                filteredarray.map((e) => (
                   <Link
                     to={`/findbitbuddies/${e.id}`}
                     onClick={() => setactive(e.id!)}

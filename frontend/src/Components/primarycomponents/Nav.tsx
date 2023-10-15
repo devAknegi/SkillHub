@@ -5,6 +5,7 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { setSession, selectSession } from "../Store/Slices/authSlice";
 import { Link } from "react-router-dom";
 import { RiUserSearchLine } from "react-icons/ri";
+import {TbExchange} from "react-icons/tb"
 
 const url: string = import.meta.env.VITE_URL;
 const anon: string = import.meta.env.VITE_KEY;
@@ -18,7 +19,7 @@ const Nav = () => {
   const [uname, createuname] = useState("");
   const [phone, updatephone] = useState("");
 
-  const [signinloading,setsigninloading] = useState(false)
+  const [signinloading, setsigninloading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -50,7 +51,7 @@ const Nav = () => {
   };
   const handleSignIn = async () => {
     try {
-      setsigninloading(true)
+      setsigninloading(true);
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -62,7 +63,7 @@ const Nav = () => {
         const session = data?.session;
         dispatch(setSession(session));
         toast.success("logged-in Sucessfully 🎉");
-        setsigninloading(false)
+        setsigninloading(false);
       }
     } catch (error) {
       toast.error("something went wrong");
@@ -73,20 +74,19 @@ const Nav = () => {
 
   const handleSignOut = async () => {
     try {
-      setsigninloading(true)
+      setsigninloading(true);
       const { error } = await supabase.auth.signOut();
       if (error) {
         toast.error(error.message);
-        
       } else {
         dispatch(setSession(null));
         toast.success("Visit again 🫠");
       }
-      setsigninloading(false)
+      setsigninloading(false);
     } catch (error) {
       toast.error("something went wrong");
       console.error("Unexpected error:", error);
-      setsigninloading(false)
+      setsigninloading(false);
     }
   };
 
@@ -139,13 +139,21 @@ const Nav = () => {
             <h1 className="text-textdark text-2xl hover:underline">SkillHub</h1>
           </div>
           {sessionData?.access_token && (
-            <div className="links flex items-center">
-              <div className="relative inline-block group">
-                <Link to={"/findbitbuddies"} className="text-textdark text-2xl">
+            <div className="links flex items-center gap-5 ">
+              <div className="relative inline-block group ">
+                <Link to={"/findbitbuddies"} className="text-richtextdark text-2xl">
                   <RiUserSearchLine />
                 </Link>
                 <h1 className="absolute top-12 bg-bgdark text-textdark text-2xs p-1 border border-border border-solid rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   {"bitBuddies+"}
+                </h1>
+              </div>
+              <div className="relative group">
+                <Link to={"/exchange"} className="text-richtextdark text-2xl">
+                  <TbExchange />
+                </Link>
+                <h1 className="absolute top-12 w-fit bg-bgdark text-textdark text-2xs p-1 border border-border border-solid rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  SkillsExchange
                 </h1>
               </div>
               {/* all the links will appear here below is the example how to use navigation  */}
@@ -166,7 +174,7 @@ const Nav = () => {
                 className="bg-transparent p-3 hover:bg-richtextdark rounded-xl transition-all duration-200 text-textdark border border-solid border-richtextdark"
                 onClick={handleSignOut}
               >
-                {signinloading?"signoff...":"Logout"}
+                {signinloading ? "signoff..." : "Logout"}
               </button>
             </div>
           ) : (
@@ -204,7 +212,7 @@ const Nav = () => {
                     className="bg-richtextdark p-3 hover:bg-hover rounded-xl transition-all duration-200 text-textdark"
                     onClick={handleSignIn}
                   >
-                    {signinloading?"signing..":"Login"} 
+                    {signinloading ? "signing.." : "Login"}
                   </button>
                 </form>
               </div>
@@ -260,7 +268,7 @@ const Nav = () => {
                     className="bg-richtextdark p-3 hover:bg-hover rounded-xl transition-all duration-200 text-textdark"
                     onClick={handleSignup}
                   >
-                      Verify!
+                    Verify!
                   </button>
                 </form>
               </div>

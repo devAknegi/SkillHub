@@ -15,6 +15,10 @@ import Profile from "./Components/Searchfunc/Profile.tsx";
 import Messaging from "./Components/userdata/Messaging.tsx";
 import Layout from "./Components/userdata/Layout.tsx";
 import MainProfile from "./Components/userdata/MainProfile.tsx";
+import Exchange from "./Components/skillExchange/Exchange.tsx";
+import OngoingExc from "./Components/skillExchange/OngoingExc.tsx";
+import Pendingreq from "./Components/skillExchange/Pendingreq.tsx";
+import Completedexc from "./Components/skillExchange/Completedexc.tsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +30,24 @@ const router = createBrowserRouter([
         element: <Landing />, //these are the sub childern here you can add more
       },
     ],
+  },
+  {
+    path:"/exchange",
+    element:<Exchange/>,
+    children:[
+      {
+        path:"/exchange/ongoing",
+        element:<OngoingExc/>
+      },
+      {
+        path:"/exchange/pending",
+        element:<Pendingreq/>
+      },
+      {
+        path:"/exchange/completed",
+        element:<Completedexc/>
+      }
+    ]
   },
   {
     path: "/dashboard",
