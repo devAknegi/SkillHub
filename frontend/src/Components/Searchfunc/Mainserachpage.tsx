@@ -1,10 +1,5 @@
-
 import "../../index.css"; //to implement grid coz tailwind sucks when it come to grid layouts
-import {
-  RiProfileLine,
-  RiUser2Fill,
-  RiSearchEyeLine,
-} from "react-icons/ri";
+import { RiProfileLine, RiUser2Fill, RiSearchEyeLine } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 
@@ -21,26 +16,28 @@ type ProfileData = {
 
 const Mainserachpage = () => {
   const [users, setusers] = useState<ProfileData[]>([]);
-  const [active,setactive] = useState<string | null>(null)
+  const [active, setactive] = useState<string | null>(null);
 
-  const isactive = (id:string)=>{
-    setactive(id)
-  }
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setloading(true);
         const response = await fetch("http://localhost:5171/api/users");
         const data = await response.json();
         setusers(data);
+        setloading(false);
       } catch (error) {
+        setloading(false);
         console.error("Error fetching data:", error);
       }
     };
-    
+
     fetchData();
+    setloading(false);
   }, []);
-  
+
   return (
     <div className="mainsearch grid h-screen w-screen overflow-hidden bg-bgdark">
       <div className="flex items-center justify-between p-5">
@@ -52,10 +49,10 @@ const Mainserachpage = () => {
         <div className="flex gap-2 justify-center items-center">
           <h1 className="text-3xl text-textdark">Find your </h1>
           <span className="text-richtextdark flex text-3xl relative group">
-            bitBuddies <i className="absolute w-full h-0.5 bg-richtextdark bottom-0 transform origin-bottom scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+            bitBuddies{" "}
+            <i className="absolute w-full h-0.5 bg-richtextdark bottom-0 transform origin-bottom scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
             <RiSearchEyeLine />
           </span>
-          
         </div>
       </div>
       <div className=" filters grid  border-t-2 border-border">
@@ -66,50 +63,62 @@ const Mainserachpage = () => {
             <span className="text-richtextdark">{users.length}</span>
           </h1>
           <div className="users h-full overflow-y-scroll flex flex-col gap-2 p-5">
-            {Array.isArray(users) && users.length > 0 ? (
-              users.map((e) => (
-                <Link to={`/findbitbuddies/${e.id}`}
-                onClick={()=>setactive(e.id!)}
-                >
-                  <div className={`${"singleprofile min-h-[3rem] items-center gap-2 flex p-2 border border-border hover:border-richtextdark rounded-xl transition-all duration-200 group"} ${active==e.id && "border-richtextdark scale-[1.03]"}`}>
-                    <div className="profile h-full flex justify-center items-center w-[20%] ">
-                      <i className="text-4xl rounded-full text-textdark group-hover:text-richtextdark ">
-                        <RiUser2Fill className="rounded-full" />
-                      </i>
-                    </div>
-                    <div className="flex flex-col ">
-                      <div className="flex gap-2">
-                        <h1 className="text-textdark capitalize">{e.name}</h1>
-                        <h1 className=" text-richtextdark lowercase">
-                          @{e.username}
-                        </h1>
+            {!loading ? (
+              Array.isArray(users) && users.length > 0 ? (
+                users.map((e) => (
+                  <Link
+                    to={`/findbitbuddies/${e.id}`}
+                    onClick={() => setactive(e.id!)}
+                  >
+                    <div
+                      className={`${"singleprofile min-h-[3rem] items-center gap-2 flex p-2 border border-border hover:border-richtextdark rounded-xl transition-all duration-200 group"} ${
+                        active == e.id && "border-richtextdark scale-[1.03]"
+                      }`}
+                    >
+                      <div className="profile h-full flex justify-center items-center w-[20%] ">
+                        <i className="text-4xl rounded-full text-textdark group-hover:text-richtextdark ">
+                          <RiUser2Fill className="rounded-full" />
+                        </i>
                       </div>
-                      <div className="">
-                        <h1 className="text-textdark">Equipped with:</h1>
-                        {e.skills && e.skills.length > 0 ? (
-                          e.skills!.map((skill, index) => (
-                            <span key={index} className="text-textdark">
-                              {skill}
-                              {index !== e.skills!.length - 1 && ", "}
-                            </span>
-                          ))
-                        ) : (
-                          <h1>this user ain't got any skills</h1>
-                        )}
+                      <div className="flex flex-col ">
+                        <div className="flex gap-2">
+                          <h1 className="text-textdark capitalize">{e.name}</h1>
+                          <h1 className=" text-richtextdark lowercase">
+                            @{e.username}
+                          </h1>
+                        </div>
+                        <div className="">
+                          <h1 className="text-textdark">Equipped with:</h1>
+                          {e.skills && e.skills.length > 0 ? (
+                            e.skills!.map((skill, index) => (
+                              <span key={index} className="text-textdark">
+                                {skill}
+                                {index !== e.skills!.length - 1 && ", "}
+                              </span>
+                            ))
+                          ) : (
+                            <h1>this user ain't got any skills</h1>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))
-            ) : (
-              <div className="flex h-full justify-center items-center ">
-                <h1 className="text-textdark w-full text-center h-fit">
-                  bitBuddies will appear here
-                </h1>
+                  </Link>
+                ))
+              ) : (
+                <div className="flex h-full justify-center items-center ">
+                  <h1 className="text-textdark w-full text-center h-fit">
+                    bitBuddies will appear here
+                  </h1>
+                </div>
+              )
+            ) : 
+            (
+              <div className="flex w-full h-full items-center justify-center">
+                <img src="/loading.svg" alt="" />
               </div>
-            )}
+            )
+            }
           </div>
-
         </div>
       </div>
     </div>

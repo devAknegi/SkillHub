@@ -15,7 +15,7 @@ const Landing = () => {
             Transforming Skills
           </span>
           <span className="text-textdark text-4xl text-center">
-            Connecting Aspirations{" "}
+            Connecting Aspirations
           </span>
           <span className=" text-richtextdark text-6xl text-center font-thin">
             Powering Growth
@@ -24,10 +24,10 @@ const Landing = () => {
         <div className="mainlandingcontent h-full w-[60%] ml-auto mr-auto mt-8">
           <p className="text-textdark text-center">
             SkillHub is a dynamic platform designed to connect individuals
-            seeking skill development by{" "}
+            seeking skill development by
             <span className="underline hover:cursor-pointer">
               exchanging skills
-            </span>{" "}
+            </span>
             with those offering their expertise.
           </p>
         </div>
