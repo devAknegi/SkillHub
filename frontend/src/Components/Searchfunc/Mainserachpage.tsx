@@ -21,6 +21,12 @@ type ProfileData = {
 
 const Mainserachpage = () => {
   const [users, setusers] = useState<ProfileData[]>([]);
+  const [active,setactive] = useState<string | null>(null)
+
+  const isactive = (id:string)=>{
+    setactive(id)
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -62,8 +68,10 @@ const Mainserachpage = () => {
           <div className="users h-full overflow-y-scroll flex flex-col gap-2 p-5">
             {Array.isArray(users) && users.length > 0 ? (
               users.map((e) => (
-                <Link to={`/findbitbuddies/${e.id}`}>
-                  <div className="singleprofile min-h-[3rem] items-center gap-2 flex p-2 border border-border hover:border-richtextdark rounded-xl hover:scale-[1.06] transition-all duration-200 group">
+                <Link to={`/findbitbuddies/${e.id}`}
+                onClick={()=>setactive(e.id!)}
+                >
+                  <div className={`${"singleprofile min-h-[3rem] items-center gap-2 flex p-2 border border-border hover:border-richtextdark rounded-xl transition-all duration-200 group"} ${active==e.id && "border-richtextdark scale-[1.03]"}`}>
                     <div className="profile h-full flex justify-center items-center w-[20%] ">
                       <i className="text-4xl rounded-full text-textdark group-hover:text-richtextdark ">
                         <RiUser2Fill className="rounded-full" />

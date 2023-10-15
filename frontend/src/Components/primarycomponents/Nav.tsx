@@ -18,6 +18,8 @@ const Nav = () => {
   const [uname, createuname] = useState("");
   const [phone, updatephone] = useState("");
 
+  const [signinloading,setsigninloading] = useState(false)
+
   const dispatch = useDispatch();
 
   const supabase: SupabaseClient = createClient(url, anon);
@@ -48,6 +50,7 @@ const Nav = () => {
   };
   const handleSignIn = async () => {
     try {
+      setsigninloading(true)
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -59,25 +62,31 @@ const Nav = () => {
         const session = data?.session;
         dispatch(setSession(session));
         toast.success("logged-in Sucessfully 🎉");
+        setsigninloading(false)
       }
     } catch (error) {
       toast.error("something went wrong");
+      setsigninloading(false);
       console.log(error);
     }
   };
 
   const handleSignOut = async () => {
     try {
+      setsigninloading(true)
       const { error } = await supabase.auth.signOut();
       if (error) {
         toast.error(error.message);
+        
       } else {
         dispatch(setSession(null));
         toast.success("Visit again 🫠");
       }
+      setsigninloading(false)
     } catch (error) {
       toast.error("something went wrong");
       console.error("Unexpected error:", error);
+      setsigninloading(false)
     }
   };
 
@@ -157,7 +166,7 @@ const Nav = () => {
                 className="bg-transparent p-3 hover:bg-richtextdark rounded-xl transition-all duration-200 text-textdark border border-solid border-richtextdark"
                 onClick={handleSignOut}
               >
-                Logout
+                {signinloading?"signoff...":"Logout"}
               </button>
             </div>
           ) : (
@@ -195,7 +204,7 @@ const Nav = () => {
                     className="bg-richtextdark p-3 hover:bg-hover rounded-xl transition-all duration-200 text-textdark"
                     onClick={handleSignIn}
                   >
-                    Login
+                    {signinloading?"signing..":"Login"} 
                   </button>
                 </form>
               </div>
@@ -251,7 +260,7 @@ const Nav = () => {
                     className="bg-richtextdark p-3 hover:bg-hover rounded-xl transition-all duration-200 text-textdark"
                     onClick={handleSignup}
                   >
-                    Verify!
+                      Verify!
                   </button>
                 </form>
               </div>

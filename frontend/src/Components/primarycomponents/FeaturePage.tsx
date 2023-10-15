@@ -55,7 +55,7 @@ const FeaturePage = () => {
           <span className="text-textdark text-4xl text-center font-thin">
             Features We Offer
           </span>
-          <hr className="border-t-2 border-orange-500 my-4" />
+          <hr className="border-t-2 border-richtextdark my-4" />
         </div>
         <div className="feature-section w-[80%] mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 pt-[5%]">
           <FeatureItem
