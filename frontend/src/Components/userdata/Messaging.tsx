@@ -161,7 +161,7 @@ const Messaging = () => {
       
       }
 
-      <div className="">
+      <div className="border-l border-border">
         <h1 className="bg-richtextdark p-4 text-center text-textdark text-lg font-bold ">
           Your BitBuddies
         </h1>

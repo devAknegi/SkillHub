@@ -96,7 +96,7 @@ const Addfriend = ({ uid }: AddfriendProps) => {
     return (
       <div className="">
         <button
-          className="p-2 bg-richtextdark text-textdark rounded-xl hover:scale-110 ml-5"
+          className="p-2 border border-richtextdark hover:bg-richtextdark text-textdark rounded-xl font-bold capitalize"
           onClick={addfriend}
         >
           Addfriend
@@ -107,7 +107,7 @@ const Addfriend = ({ uid }: AddfriendProps) => {
     return (
       <div className="">
         <button
-          className="p-2 bg-richtextdark text-textdark rounded-xl hover:scale-110 ml-5"
+          className="p-2 border border-red-600 text-textdark rounded-xl font-bold capitalize"
           onClick={removefrined}
         >
           req pending..,click to revoke 
@@ -118,7 +118,7 @@ const Addfriend = ({ uid }: AddfriendProps) => {
     return (
       <div className="">
         <button
-          className="p-2 bg-richtextdark text-textdark rounded-xl hover:scale-110 ml-5"
+          className="p-2 border border-red-600 hover:bg-red-600 text-textdark rounded-xl font-bold capitalize"
           onClick={removefrined}
         >
           remove friend
