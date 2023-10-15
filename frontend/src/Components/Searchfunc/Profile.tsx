@@ -16,15 +16,20 @@ type UserData = {
 const Profile = () => {
   const [userData, setUserData] = useState<UserData>({});
   const { id } = useParams();
+  const [loading,setloading] = useState(false)
+
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setloading(true)
         const response = await fetch(`http://localhost:5171/api/user/${id}`);
         const data = await response.json();
         setUserData(data);
+        setloading(false)
       } catch (error) {
+        setloading(false)
         console.log(error);
       }
     };
@@ -33,7 +38,12 @@ const Profile = () => {
   }, [id]);
   return (
     <div className="p-5 overflow-y-scroll h-[90vh]">
-  {userData && (
+  {userData && loading?(
+  <div className="w-full h-full flex justify-center items-center">
+    <img src="/loading.svg" alt="" />
+  </div>
+  
+  ) :(
     <div className="flex flex-col gap-5">
       <div className="flex gap-4 items-baseline">
         <p className="text-4xl font-bold text-textdark">{userData.name}</p>
