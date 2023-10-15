@@ -7,7 +7,7 @@ type UserData = {
   bio?: string;
   skills?: string[];
   email?: string;
-  Expertise?: string[];
+  Expertise?: string[]; 
   phone_number?: string;
   username?: string;
 };

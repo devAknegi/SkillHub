@@ -1,55 +1,181 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Young+Serif&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Young+Serif&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --mint: #9CFC97;
+@layer base {
+  :root {
+    --mint: #9cfc97;
     --black: #090302;
     --orange: #ff6b00;
     --white: #ffffff;
     --lightblue: #60a5fa;
-}
+  }
 
-*,*::after,::before{
+  *,
+  *::after,
+  ::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+  }
 
-html{
-    
+  html {
     background: var(--black);
-    font-family: 'Poppins', sans-serif;
-}
+    font-family: "Poppins", sans-serif;
+  }
 
-
-body{
+  body {
     overflow-x: hidden;
-}
+  }
+  
+  th, td {
+    padding: 0.75rem 0.625rem;
+    font-size: 14px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
 
+  thead {
+    background-color: #f7fafc;
+  }
 
-.mainsearch{
-    grid-template-rows: 1fr 9fr;
+  th {
+    font-weight: 600;
+  }
 
-}
+  a {
+    color: var(--lightblue);
+    text-decoration: none;
+  }
 
-.filters{
-    grid-template-columns: 7fr 3fr;
-}
+  a:hover {
+    text-decoration: underline;
+  }
 
-.filteritems{
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows:repeat(3,1fr) ;
-}
+  img {
+    display: block;
+  }
 
-.filtercards{
-    margin: 1.3rem;
+  .container {
+    max-width: 93.5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+    font-size: 10px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .btn:focus {
+    outline: 0.5rem auto #4d90fe;
+  }
+
+  .profile {
+    padding: 50px 0;
+    color: var(--white);
+  }
+
+  .profile::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .profile-image {
+    float: left;
+    width: calc(33.333% - 10px);
     display: flex;
-    align-items: center;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
+    align-items: center;
+    margin-right: 30px;
+    padding-right: 5px;
+  }
+
+  .profile-image img {
+    border-radius: 50%;
+  }
+
+  .profile-user-settings,
+  .profile-stats,
+  .profile-bio {
+    float: left;
+    width: calc(66.666% - 20px);
+  }
+
+  .profile-user-name {
+    display: inline-block;
+    font-size: 32px;
+    font-weight: 300;
+  }
+
+  .profile-edit-btn {
+    font-size: 14px;
+    line-height: 1.8;
+    border: 2px solid #084f04;
+    color: green;
+    border-radius: 3px;
+    padding: 0 24px;
+    margin-left: 20px;
+  }
+
+  .profile-stats {
+    margin-top: 23px;
+    
+  }
+
+  .profile-stats li {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-right: 40px;
+    cursor: pointer;
+  }
+
+  .profile-stats li:last-of-type {
+    margin-right: 0;
+  }
+
+  .profile-bio {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 23px;
+  }
+
+  .profile-real-name,
+  .profile-stat-count,
+  .profile-edit-btn {
+    font-weight: 600;
+  }
+}
+
+.mainsearch {
+  grid-template-rows: 1fr 9fr;
+}
+
+.filters {
+  grid-template-columns: 7fr 3fr;
+}
+
+.filteritems {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.filtercards {
+  margin: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .filtercards::before {
