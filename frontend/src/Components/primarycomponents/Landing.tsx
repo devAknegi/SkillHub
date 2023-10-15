@@ -17,7 +17,7 @@ const Landing = () => {
           <span className="text-textdark text-4xl text-center">
             Connecting Aspirations
           </span>
-          <span className=" text-richtextdark text-6xl text-center font-thin">
+          <span className=" text-richtextdark text-6xl text-center font-thin ">
             Powering Growth
           </span>
         </div>

@@ -83,7 +83,7 @@ function SidebarOptionsLink({ link }: { link: any }) {
 }
 export default function Sidebar() {
   return (
-    <div className="bg-bgdark w-60 h-screen flex flex-col border-r border-border">
+    <div className="bg-bgdark w-45 h-screen flex flex-col border-r border-border">
       <Link to={"/"} className="border-b border-border">
         <div className="flex items-center justify-center gap-2 p-2 ">
           <img src="/logo.png" alt="scg" className="h-10 w-10" />
