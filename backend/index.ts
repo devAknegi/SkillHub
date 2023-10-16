@@ -7,11 +7,8 @@ import pending from "./routes/fetchpendingreq.ts"
 import acceptrequest from "./routes/acceptrequest.ts"
 import removerequest from "./routes/removereq.ts"
 import accepted from "./routes/fetchacceptedreq.ts"
-
 import pendingreq from "./routes/exchange/pendingexcreq.ts"
-
 import postexchangemessage from "./routes/exchange/postmessage.ts"
-
 import getmessages from "./routes/getmessages.ts"
 import cors from "cors"
 import http from 'http';
@@ -36,7 +33,7 @@ const io = new Server(server, {
 app.use(cors());
 app.use(express.json())
 
-app.use('/api', users);
+app.use('/api', users)
 
 app.use("/api", user)
 

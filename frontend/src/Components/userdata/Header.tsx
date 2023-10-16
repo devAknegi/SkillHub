@@ -11,15 +11,15 @@ import { selectSession } from "../Store/Slices/authSlice";
 
 type UserData =
   | {
-      id?: string;
-      name?: string;
-      bio?: string;
-      skills?: string[];
-      email?: string;
-      Expertise?: string[];
-      phone_number?: string;
-      username?: string;
-    }[]
+    id?: string;
+    name?: string;
+    bio?: string;
+    skills?: string[];
+    email?: string;
+    Expertise?: string[];
+    phone_number?: string;
+    username?: string;
+  }[]
   | [];
 
 function Header() {
@@ -133,9 +133,12 @@ function Header() {
         <input
           type="text"
           placeholder="Search..."
-          className="text-sm focus:outline-none active:outline-none border border-gray-300 w-[24rem] h-10 pl-11 pr-4 rounded-sm"
+          className="text-sm focus:outline-none active:outline-none border border-gray-300 w-full md:w-64 h-10 pl-11 pr-4 rounded-sm"
         />
       </div>
+
+
+
       <div className="flex items-center gap-2 mr-2">
         <Popover className="relative">
           {({ open }) => (
@@ -166,7 +169,7 @@ function Header() {
                       Your buddies
                     </strong>
                     <div className="mt-3 text-sm flex flex-col gap-3">
-                    {friendslist && friendslist.length > 0 ? (
+                      {friendslist && friendslist.length > 0 ? (
                         friendslist.map((e) => (
                           <div
                             key={e.id}
@@ -175,9 +178,9 @@ function Header() {
                             <div className="flex p-2 gap-2 ">
                               <h1 className="capitalize">{e.name}</h1>
                               <Link to={`/findbitbuddies/${e.id}`}>
-                              <h1 className="text-richtextdark hover:underline hover:cursor-pointer">
-                                {e.username}
-                              </h1>
+                                <h1 className="text-richtextdark hover:underline hover:cursor-pointer">
+                                  {e.username}
+                                </h1>
                               </Link>
                             </div>
                           </div>
@@ -327,7 +330,7 @@ function Header() {
               <Menu.Item>
                 {({ active }) => (
                   <div
-                    onClick={() => navigate("dashboard/Profile")}
+                    onClick={() => navigate("Profile")}
                     className={classNames(
                       active && "bg-gray-300",
                       "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200"

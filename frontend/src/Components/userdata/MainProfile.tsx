@@ -7,7 +7,7 @@ function MainProfile() {
             <div className="flex flex-col flex-1">
                 <ProfileHeader />
                 <div className="flex-1 p-4 min-h-0 overflow-auto">
-                    <ProfilePage />
+                <ProfilePage />
                 </div>
             </div>
         </div>
