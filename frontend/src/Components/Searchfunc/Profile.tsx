@@ -19,8 +19,6 @@ const Profile = () => {
   const { id } = useParams();
   const [loading,setloading] = useState(false)
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {

@@ -53,107 +53,19 @@
     text-decoration: underline;
   }
 
-  img {
-    display: block;
-  }
-
-  .container {
-    max-width: 93.5rem;
-    margin: 0 auto;
-    padding: 0 2rem;
-    font-size: 10px;
-  }
-
-  .btn {
-    display: inline-block;
-    background: none;
-    border: none;
-    color: inherit;
-    padding: 0;
-    cursor: pointer;
-  }
-
-  .btn:focus {
-    outline: 0.5rem auto #4d90fe;
-  }
-
-  .profile {
-    padding: 50px 0;
-    color: var(--white);
-  }
-
-  .profile::after {
+  .profile::after{
     content: "";
     display: block;
     clear: both;
   }
-
   .profile-image {
     float: left;
     width: calc(33.333% - 10px);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 30px;
-    padding-right: 5px;
   }
 
-  .profile-image img {
-    border-radius: 50%;
-  }
-
-  .profile-user-settings,
-  .profile-stats,
-  .profile-bio {
-    float: left;
-    width: calc(66.666% - 20px);
-  }
-
-  .profile-user-name {
-    display: inline-block;
-    font-size: 32px;
-    font-weight: 300;
-  }
-
-  .profile-edit-btn {
-    font-size: 14px;
-    line-height: 1.8;
-    border: 2px solid #084f04;
-    color: green;
-    border-radius: 3px;
-    padding: 0 24px;
-    margin-left: 20px;
-  }
-
-  .profile-stats {
-    margin-top: 23px;
-    
-  }
-
-  .profile-stats li {
-    display: inline-block;
-    font-size: 16px;
-    line-height: 1.5;
-    margin-right: 40px;
-    cursor: pointer;
-  }
-
-  .profile-stats li:last-of-type {
-    margin-right: 0;
-  }
-
-  .profile-bio {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    margin-top: 23px;
-  }
-
-  .profile-real-name,
-  .profile-stat-count,
-  .profile-edit-btn {
-    font-weight: 600;
-  }
 }
 
 .mainsearch {

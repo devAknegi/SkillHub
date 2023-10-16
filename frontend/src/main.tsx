@@ -5,7 +5,7 @@ import "./index.css";
 import { Toaster } from "sonner";
 import { Provider } from "react-redux";
 import store from "./Components/Store/store.ts";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import Landing from "./Components/primarycomponents/Landing.tsx";
 // import Dashboard from './Components/userdata/Dashboard.tsx'
 import Mainserachpage from "./Components/Searchfunc/Mainserachpage.tsx";
@@ -19,6 +19,7 @@ import Exchange from "./Components/skillExchange/Exchange.tsx";
 import OngoingExc from "./Components/skillExchange/OngoingExc.tsx";
 import Pendingreq from "./Components/skillExchange/Pendingreq.tsx";
 import Completedexc from "./Components/skillExchange/Completedexc.tsx";
+import EditProfile from "./Components/userdata/EditProfile.tsx";
 
 const router = createBrowserRouter([
   {
@@ -29,23 +30,23 @@ const router = createBrowserRouter([
         path: "/",
         element: <Landing />, //these are the sub childern here you can add more
       },
-    ],
+    ]
   },
   {
-    path:"/exchange",
-    element:<Exchange/>,
-    children:[
+    path: "/exchange",
+    element: <Exchange />,
+    children: [
       {
-        path:"/exchange/ongoing",
-        element:<OngoingExc/>
+        path: "/exchange/ongoing",
+        element: <OngoingExc />
       },
       {
-        path:"/exchange/pending",
-        element:<Pendingreq/>
+        path: "/exchange/pending",
+        element: <Pendingreq />
       },
       {
-        path:"/exchange/completed",
-        element:<Completedexc/>
+        path: "/exchange/completed",
+        element: <Completedexc />
       }
     ]
   },
@@ -54,16 +55,20 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/dashboard/messages",
+        path: "messages",
         element: <Messaging />,
       },
       {
-        path: "dashboard/Profile",
+        path: "Profile",
         element: <MainProfile />,
-      }
+      },
+      {
+        path: 'editProfile',
+        element: <EditProfile />,
+      },
     ],
   },
-  
+
 
   {
     path: "/findbitbuddies",

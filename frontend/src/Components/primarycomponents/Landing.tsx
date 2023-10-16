@@ -25,8 +25,8 @@ const Landing = () => {
           <p className="text-textdark text-center">
             SkillHub is a dynamic platform designed to connect individuals
             seeking skill development by
-            <span className="underline hover:cursor-pointer">
-              exchanging skills
+            <span className="underline hover:text-richtextdark hover:cursor-pointer">
+              {' '}exchanging skills{' '}
             </span>
             with those offering their expertise.
           </p>
@@ -34,7 +34,7 @@ const Landing = () => {
         {
           !sessionData?.access_token && <div className="tempdiv h-[10vh]"></div>
         }
-        { sessionData?.access_token &&
+        {sessionData?.access_token &&
           <div className="mainlandingcontent h-full w-[60%] ml-auto mr-auto mt-8 flex justify-center gap-5">
             <button
               className="bg-richtextdark p-3 m-20 hover:bg-hover rounded-xl transition-all duration-200 text-textdark"
