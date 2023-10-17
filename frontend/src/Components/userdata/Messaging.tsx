@@ -37,7 +37,7 @@ const Messaging = () => {
   const fetchMessages = async (receiverId: string) => {
     try {
       const response = await fetch(
-        `https://skillhub-584r.onrender.com/api/getmessages/${id}/${receiverId}`
+        `http://localhost:5171/api/getmessages/${id}/${receiverId}`
       );
       const data = await response.json();
       setMessages(data.messages);
@@ -62,7 +62,7 @@ const Messaging = () => {
       try {
         setloading(true);
         const response = await fetch(
-          `https://skillhub-584r.onrender.com/api/getacceptedreq/${id}`
+          `http://localhost:5171/api/getacceptedreq/${id}`
         );
         const data = await response.json();
         setFriendList(data.profiles);

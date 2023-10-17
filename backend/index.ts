@@ -74,6 +74,7 @@ io.on("connection", (socket) => {
 
   socket.on("join", (userid: string) => {
     socket.join(userid.toString())
+    console.log("user connected")
   });
 
   socket.on("chat message", async ({ senderId, receiverId, message }) => {
@@ -97,7 +98,7 @@ io.on("connection", (socket) => {
   })
 
   socket.on("disconnect", () => {
-    // console.log("user disconnected")
+    console.log("user disconnected")
   })
 
 });
