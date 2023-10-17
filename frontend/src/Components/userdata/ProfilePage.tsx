@@ -20,7 +20,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5171/api/user/${id}`);
+        const response = await fetch(`https://skillhub-584r.onrender.com/api/user/${id}`);
         const data = await response.json();
         setUserData(data);
       } catch (error) {

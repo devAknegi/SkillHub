@@ -51,7 +51,7 @@ export const Exchangebutton = ({ udata }: ExchanhebuttonProps) => {
     }
     try {
       setloading(true)
-      const data = fetch("http://localhost:5171/api/storeexchange", {
+      const data = fetch("https://skillhub-584r.onrender.com/api/storeexchange", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

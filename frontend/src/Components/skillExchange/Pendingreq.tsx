@@ -29,7 +29,7 @@ const Pendingreq = () => {
       try {
         setloading(true);
         const respone = await fetch(
-          `http://localhost:5171/api/getexcrequests/${id}`
+          `https://skillhub-584r.onrender.com/api/getexcrequests/${id}`
         );
         const data = await respone.json();
         if (data) {
@@ -49,7 +49,7 @@ const Pendingreq = () => {
       try {
         setloading(true);
         const respone = await fetch(
-          `http://localhost:5171/api/getexcreceivedreq/${id}`
+          `https://skillhub-584r.onrender.com/api/getexcreceivedreq/${id}`
         );
         const data = await respone.json();
         if (data) {
