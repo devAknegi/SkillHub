@@ -62,9 +62,7 @@ app.use("/api", pendingreq)
 
 app.use("/api", pendingrecivedreq)
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
 
 
 
@@ -104,8 +102,8 @@ io.on("connection", (socket) => {
 });
 
 
-server.listen(3001, () => {
-  console.log(`server fired on port 3001`);
+server.listen(PORT, () => {
+  console.log(`server fired on port ${PORT}`);
 })
 
 

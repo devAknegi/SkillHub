@@ -31,13 +31,13 @@ const Messaging = () => {
   4;
   const messagesContainerRef = useRef<HTMLDivElement | null>(null);
   const id = session?.user.id;
-  const socket = io("http://localhost:3001");
+  const socket = io("https://skillhub-584r.onrender.com");
   const [loading, setloading] = useState(false);
 
   const fetchMessages = async (receiverId: string) => {
     try {
       const response = await fetch(
-        `http://localhost:5171/api/getmessages/${id}/${receiverId}`
+        `https://skillhub-584r.onrender.com/api/getmessages/${id}/${receiverId}`
       );
       const data = await response.json();
       setMessages(data.messages);
@@ -62,7 +62,7 @@ const Messaging = () => {
       try {
         setloading(true);
         const response = await fetch(
-          `http://localhost:5171/api/getacceptedreq/${id}`
+          `https://skillhub-584r.onrender.com/api/getacceptedreq/${id}`
         );
         const data = await response.json();
         setFriendList(data.profiles);
