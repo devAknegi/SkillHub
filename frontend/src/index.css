@@ -113,7 +113,7 @@
 
 ::-webkit-scrollbar{
   background: transparent;
-    width: 7px;
+    width: 2px;
 }
 ::-webkit-scrollbar-thumb{
     background-color: #3b82f6;

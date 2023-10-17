@@ -43,6 +43,8 @@ model skill_exchanges {
   accepted                                       Boolean?  @default(false)
   created_at                                     DateTime? @default(now()) @db.Timestamptz(6)
   offermessage                                   String?
+  receivername                                   String?
+  sendername                                     String?
   profiles_skill_exchanges_receiver_idToprofiles profiles? @relation("skill_exchanges_receiver_idToprofiles", fields: [receiver_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   profiles_skill_exchanges_sender_idToprofiles   profiles? @relation("skill_exchanges_sender_idToprofiles", fields: [sender_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

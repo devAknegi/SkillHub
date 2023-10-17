@@ -10,9 +10,6 @@ type UserData = {
   Expertise?: string[];
   phone_number?: string;
   username?: string;
-  // followers?: string;
-  // following?: string;
-  // buddies?: string;
 };
 
 const ProfileHeader = () => {
@@ -58,10 +55,10 @@ const ProfileHeader = () => {
             <div className="float-left font-semibold ml-10">
               <ul className="flex items-center mt-6">
                 <li className="inline-block text-base leading-6 mr-10 cursor-pointer">
-                  <span>{ userData.followers? userData.followers : 0}</span>  Followers
+                  <span></span>  Followers
                 </li>
                 <li className="inline-block text-base leading-6 cursor-pointer">
-                  <span> {userData.following ? userData.following :0} </span> Following
+                  <span></span> Following
                 </li>
               </ul>
             </div>

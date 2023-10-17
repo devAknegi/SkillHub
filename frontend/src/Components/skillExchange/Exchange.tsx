@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 
 const Exchange = () => {
   return (
-    <div className="bg-bgdark min-h-screen w-screen">
+    <div className="bg-bgdark min-h-screen w-screen p-1">
       <div className="h-[10vh] flex justify-center items-center">
         <h1 className="text-5xl font-bold text-textdark">SKILL EXCHANGE </h1>
       </div>
@@ -20,7 +20,9 @@ const Exchange = () => {
           <h1>Completed Exchanges</h1>
         </Link>
       </div>
+      <div className=" flex items-center justify-center">
       <Outlet />
+      </div>
     </div>
   );
 };
