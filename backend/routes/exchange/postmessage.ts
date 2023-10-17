@@ -6,7 +6,7 @@ import { randomUUID } from "crypto";
 const router = express.Router()
 
 router.post("/storeexchange",async (req,res)=>{
-    const {sender_id,receiver_id,desired_skills,message} = req.body;
+    const {sender_id,receiver_id,desired_skills,message,receivername,sendername} = req.body;
     
     const data = await prisma.skill_exchanges.create({
         data:{
@@ -14,7 +14,9 @@ router.post("/storeexchange",async (req,res)=>{
             sender_id,
             receiver_id,
             desired_skills,
-            offermessage:message
+            offermessage:message,
+            receivername,
+            sendername,
         }
     })
 

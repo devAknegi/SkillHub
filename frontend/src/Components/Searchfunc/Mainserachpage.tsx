@@ -1,5 +1,5 @@
 import "../../index.css"; //to implement grid coz tailwind sucks when it come to grid layouts
-import { RiProfileLine, RiUser2Fill, RiSearchEyeLine, RiArrowLeftCircleFill, RiHome2Fill } from "react-icons/ri";
+import { RiUser2Fill, RiSearchEyeLine, RiHome2Fill } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
