@@ -1,5 +1,5 @@
 // Addfriend.tsx
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import { RootState } from "../Store/store";
 import { selectSession } from "../Store/Slices/authSlice";
 import { useSelector } from "react-redux";
@@ -21,6 +21,7 @@ interface ExchanhebuttonProps {
 export const Exchangebutton = ({ udata }: ExchanhebuttonProps) => {
   const session = useSelector((state: RootState) => selectSession(state));
   const id = session?.user.id;
+  const sendername = session?.user.user_metadata.username
   const [modal, openmodal] = useState(false);
   const [desiredSkills, setdesiredSkills] = useState<string[]>([]);
   const [message, setmessage] = useState<string>("");
@@ -49,6 +50,7 @@ export const Exchangebutton = ({ udata }: ExchanhebuttonProps) => {
       return;
     }
     try {
+      setloading(true)
       const data = fetch("http://localhost:5171/api/storeexchange", {
         method: "POST",
         headers: {
@@ -56,11 +58,15 @@ export const Exchangebutton = ({ udata }: ExchanhebuttonProps) => {
         },
         body: JSON.stringify({
           sender_id: id,
+          sendername,
           receiver_id: udata.id,
           desired_skills: desiredSkills,
           message: message,
+          receivername:udata.username,
         }),
       });
+
+      setloading(false);
 
       const status = (await data).ok
       if(status)
@@ -68,6 +74,7 @@ export const Exchangebutton = ({ udata }: ExchanhebuttonProps) => {
       else
       toast.error("error during sending req")
     } catch (error) {
+      setloading(false)
       toast.error("something went wrong check the fetch method")
     }
   };

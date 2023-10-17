@@ -5,7 +5,7 @@ import "./index.css";
 import { Toaster } from "sonner";
 import { Provider } from "react-redux";
 import store from "./Components/Store/store.ts";
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Landing from "./Components/primarycomponents/Landing.tsx";
 // import Dashboard from './Components/userdata/Dashboard.tsx'
 import Mainserachpage from "./Components/Searchfunc/Mainserachpage.tsx";
