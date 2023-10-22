@@ -25,6 +25,8 @@ const FeatureItem: React.FC<{ title: string; description: string }> = ({
     config: { duration: 800 },
   });
 
+ 
+
   return (
     <animated.div
       ref={ref}

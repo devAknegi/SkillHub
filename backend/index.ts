@@ -11,6 +11,8 @@ import pendingreq from "./routes/exchange/pendingexcreq.ts"
 import pendingrecivedreq from "./routes/exchange/pendingrecivedreq.ts"
 import postexchangemessage from "./routes/exchange/postmessage.ts"
 import getmessages from "./routes/getmessages.ts"
+import acceptreq from "./routes/exchange/acceptthereq.ts"
+import ongoingexc from "./routes/exchange/getongoing.ts"
 import cors from "cors"
 import http from 'http';
 import { Server } from 'socket.io';
@@ -62,6 +64,10 @@ app.use("/api", pendingreq)
 
 app.use("/api", pendingrecivedreq)
 
+
+app.use("/api", acceptreq)
+
+app.use("/api",ongoingexc);
 
 
 

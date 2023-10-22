@@ -9,7 +9,8 @@ router.get("/getexcreceivedreq/:id",async (req,res)=>{
     const {id} = req.params;
     const data = await prisma.skill_exchanges.findMany({
         where: {
-          receiver_id:id
+          receiver_id:id,
+          accepted:false
         },
       });
     if(data)
