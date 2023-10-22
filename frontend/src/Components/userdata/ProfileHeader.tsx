@@ -19,7 +19,7 @@ const ProfileHeader = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://skillhub-584r.onrender.com/api/user/${id}`);
+        const response = await fetch(`http://localhost:5171/api/user/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch user data');
         }

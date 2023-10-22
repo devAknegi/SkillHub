@@ -17,7 +17,7 @@ const Addfriend = ({ uid }: AddfriendProps) => {
     setLoading(true)
     try {
       const id2 = session?.user.id;
-      const response = await fetch("https://skillhub-584r.onrender.com/api/friendrequest", {
+      const response = await fetch("http://localhost:5171/api/friendrequest", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const Addfriend = ({ uid }: AddfriendProps) => {
     setLoading(true)
     try {
       const id2 = session?.user.id;
-      const response = await fetch("https://skillhub-584r.onrender.com/api/removerequest", {
+      const response = await fetch("http://localhost:5171/api/removerequest", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +73,7 @@ const Addfriend = ({ uid }: AddfriendProps) => {
     const fetchData = async () => {
       try {
         const id2 = session?.user.id;
-        const response = await fetch(`https://skillhub-584r.onrender.com/api/check?reqsender=${id2}&reqreciver=${uid}`);
+        const response = await fetch(`http://localhost:5171/api/check?reqsender=${id2}&reqreciver=${uid}`);
 
         if (response.ok) {
           const data = await response.json();

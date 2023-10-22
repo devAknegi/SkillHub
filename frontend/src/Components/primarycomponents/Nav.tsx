@@ -18,6 +18,7 @@ const Nav = () => {
   const [newpassword, createPassword] = useState("");
   const [uname, createuname] = useState("");
   const [phone, updatephone] = useState("");
+  const [loading ,setloading] = useState(false)
 
   const [signinloading, setsigninloading] = useState(false);
 
@@ -27,24 +28,30 @@ const Nav = () => {
 
   const handleSignup = async () => {
     try {
+      setloading(true)
       const { data, error } = await supabase.auth.signUp({
         email: newemail,
         password: newpassword,
         options: {
           data: { username: uname, phone },
+
         },
       });
       if (error) {
         toast.error(error.message);
+        setloading(false);
       } else {
         await supabase.from("profiles").upsert({
           id: data.user?.id,
           username: uname,
           email: newemail,
-        } as any);
+        });
+
         toast.success("Check you email for verification!!!");
+        setloading(false);
       }
     } catch (error) {
+      setloading(false);
       toast.error("something went wrong");
       console.log(error);
     }
@@ -136,7 +143,8 @@ const Nav = () => {
         <div className="flex gap-4">
           <div className="img p-2 h-full w-fit flex gap-1 items-center ">
             <img src="/logo.png" alt="scg" className="h-full w-14" />
-            <h1 className="text-textdark text-2xl hover:underline">SkillHub</h1>
+            
+            <h1 className="text-textdark text-2xl hover:cursor-pointer" onClick={()=>{toast.success("Thankyou for clicking 😉. Btw Loved our logo or just clicked out of curosity")}}>SkillHub</h1>
           </div>
           {sessionData?.access_token && (
             <div className="links flex items-center gap-5 ">
@@ -234,7 +242,7 @@ const Nav = () => {
                     required
                     placeholder="Enter the email"
                     onChange={(e) => createEmail(e.target.value)}
-                    className="rounded-sm text-center w-[80%] h-[15%] outline-richtextdark text-xl"
+                    className="rounded-sm text-center w-[80%] h-[15%] outline-richtextdark text-base"
                   />
                   <input
                     type="password"
@@ -243,7 +251,7 @@ const Nav = () => {
                     required
                     placeholder="Enter your password"
                     onChange={(e) => createPassword(e.target.value)}
-                    className="rounded-sm text-center w-[80%] h-[15%] outline-richtextdark text-xl "
+                    className="rounded-sm text-center w-[80%] h-[15%] outline-richtextdark text-base"
                   />
 
                   <input
@@ -253,11 +261,11 @@ const Nav = () => {
                     required
                     placeholder="Enter a unique username"
                     onChange={(e) => createuname(e.target.value)}
-                    className="rounded-sm text-center w-[80%] h-[15%] outline-richtextdark text-lg "
+                    className="rounded-sm text-center w-[80%] h-[15%] outline-richtextdark text-base "
                   />
 
                   <input
-                    type="number"
+                    type="text"
                     name="phone"
                     id="phone"
                     placeholder="Mobile-number(optional)"
@@ -268,7 +276,7 @@ const Nav = () => {
                     className="bg-richtextdark p-3 hover:bg-hover rounded-xl transition-all duration-200 text-textdark"
                     onClick={handleSignup}
                   >
-                    Verify!
+                    {loading?"sending...":"Send mail"}
                   </button>
                 </form>
               </div>

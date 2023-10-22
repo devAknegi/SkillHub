@@ -28,7 +28,7 @@ const Mainserachpage = () => {
     const fetchData = async () => {
       try {
         setloading(true);
-        const response = await fetch("https://skillhub-584r.onrender.com/api/users");
+        const response = await fetch("http://localhost:5171/api/users");
         const data = await response.json();
         setusers(data);
         setloading(false);

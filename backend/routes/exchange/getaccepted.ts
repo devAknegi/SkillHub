@@ -1,17 +1,15 @@
 import express from "express"
 import prisma from "../../prisma/prisma.ts";
-import { randomUUID } from "crypto";
 
 
 const router = express.Router()
 
-router.get("/getexcrequests/:id",async (req,res)=>{
+router.get("/getexcreceivedreq/:id",async (req,res)=>{
     const {id} = req.params;
     const data = await prisma.skill_exchanges.findMany({
         where: {
-          sender_id: id,
-          accepted:false,
-          
+          receiver_id:id,
+          accepted:false
         },
       });
     if(data)
