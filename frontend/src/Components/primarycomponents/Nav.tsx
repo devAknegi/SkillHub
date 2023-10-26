@@ -5,7 +5,8 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { setSession, selectSession } from "../Store/Slices/authSlice";
 import { Link } from "react-router-dom";
 import { RiUserSearchLine } from "react-icons/ri";
-import {TbExchange} from "react-icons/tb"
+import { TbExchange } from "react-icons/tb"
+import { HiOutlineBuildingStorefront } from "react-icons/hi2"
 
 const url: string = import.meta.env.VITE_URL;
 const anon: string = import.meta.env.VITE_KEY;
@@ -162,6 +163,14 @@ const Nav = () => {
                 </Link>
                 <h1 className="absolute top-12 w-fit bg-bgdark text-textdark text-2xs p-1 border border-border border-solid rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   SkillsExchange
+                </h1>
+              </div>
+              <div className="relative group">
+                <Link to={"/marketplace"} className="text-richtextdark text-2xl">
+                  <HiOutlineBuildingStorefront />
+                </Link>
+                <h1 className="absolute top-12 w-fit bg-bgdark text-textdark text-2xs p-1 border border-border border-solid rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  MarketPlace
                 </h1>
               </div>
               {/* all the links will appear here below is the example how to use navigation  */}
