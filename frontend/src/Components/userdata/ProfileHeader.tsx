@@ -19,7 +19,7 @@ const ProfileHeader = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5171/api/user/${id}`);
+        const response = await fetch(`https://skillhub-584r.onrender.com/api/user/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch user data');
         }
@@ -57,11 +57,11 @@ const ProfileHeader = () => {
 
             <div className="float-left font-semibold ml-10">
               <ul className="flex items-center mt-6">
-                <span className="text-lg pr-3"> 100 </span>
+                <span className="text-lg pr-3"> 0 </span>
                 <li className="inline-block text-lg text-richtextdark mr-10 cursor-pointer">
                   Followers
                 </li>
-                <span className="text-lg pr-3">100 </span>
+                <span className="text-lg pr-3"> 0 </span>
                 <li className="inline-block text-lg text-richtextdark cursor-pointer">
                   Following
                 </li>

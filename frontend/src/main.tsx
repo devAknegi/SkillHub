@@ -20,6 +20,7 @@ import OngoingExc from "./Components/skillExchange/OngoingExc.tsx";
 import Pendingreq from "./Components/skillExchange/Pendingreq.tsx";
 import Completedexc from "./Components/skillExchange/Completedexc.tsx";
 import EditProfile from "./Components/userdata/EditProfile.tsx";
+import MarketPlace from "./Components/marketplace/MarketPlace.tsx";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
     ],
+  },
+  {
+    path: "/marketplace",
+    element: <MarketPlace />,
   },
 ]);
 
