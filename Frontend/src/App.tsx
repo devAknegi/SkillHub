@@ -1,27 +1,39 @@
+import Navbar from "./Components/Navbar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import MainSection from "./components/MainSection"
-import SideNavbar from "./components/SideNavbar"
-import TopNavbar from "./components/TopNavbar"
+import LandingPage from "./Components/LandingPage";
+import AuthenticatedApp from "./Components/AuthenticatedApp";
+
 function App() {
-  //state lifiting 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSideNavbarVisible, setIsSideNavbarVisible] = useState<boolean>(true);
+  
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
 
   const toggleSideNavbar = () => {
     setIsSideNavbarVisible(!isSideNavbarVisible);
   };
 
-
   return (
-    <>
-      <div className="w-[100%] h-[100vh]">
-        <TopNavbar toggleSideNavbar={toggleSideNavbar}/>
-        <div className="h-[90%] w-full grid" style={{gridTemplateColumns:"1fr 4fr"}}>
-          <SideNavbar isVisible={isSideNavbarVisible}/>
-          <MainSection />
-        </div>
-      </div>
-    </>
-  )
+    <Router>
+      <Navbar
+        isAuthenticated={isAuthenticated}
+        onLogout={handleLogout}
+        onLogin={handleLogin}
+        toggleSideNavbar={toggleSideNavbar}
+      />
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/app/*' element={<AuthenticatedApp isVisible={isSideNavbarVisible} />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
