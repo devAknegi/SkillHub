@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --lightblue: #3bcaff;
+  --lightpink: #df61f6;
+  --darkblue: #010112;
+}
+
+*,
+*::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--darkblue);
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  color: whitesmoke;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+}
