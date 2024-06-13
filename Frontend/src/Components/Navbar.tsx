@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({
           className='text-2xl cursor-pointer flex flex-center text-white hover:no-underline ml-5'
         >
           <img src={"/logo.png"} className='w-10 h-10' alt='logo' />
-          <span className='font-semibold p-1'>SkillHub</span>
+          <span className='md:block hidden md:font-semibold p-1'>SkillHub</span>
         </Link>
         {isAuthenticated ? <Options /> : <> </>}
       </div>

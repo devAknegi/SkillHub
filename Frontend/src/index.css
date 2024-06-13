@@ -31,3 +31,7 @@ body {
 button {
   cursor: pointer;
 }
+
+.span1{
+  color: var(--lightblue);
+}
