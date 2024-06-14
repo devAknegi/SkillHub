@@ -32,12 +32,12 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <nav
-      className={`flex items-center top-0 fixed justify-between backdrop-blur-lg w-full mb-5 py-3 px-8`}
+      className={`flex items-center top-0 fixed justify-between backdrop-blur-lg w-full mb-5 py-3 pr-5`}
     >
-      <div className='flex flex-center items-center'>
+      <div className='flex items-center pl-3'>
         {isAuthenticated ? (
           <button type='button' onClick={toggleSideNavbar}>
-            <Hamburger size={25} easing='ease-in' />{" "}
+            <Hamburger size={20} easing='ease-in' />{" "}
           </button>
         ) : (
           <></>
@@ -49,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({
           <img src={"/logo.png"} className='w-10 h-10' alt='logo' />
           <span className='md:block hidden md:font-semibold p-1'>SkillHub</span>
         </Link>
-        {isAuthenticated ? <Options /> : <> </>}
+        {isAuthenticated && location.pathname !=='/' ? <Options /> : <> </>}
       </div>
       <div className='flex space-x-4 items-center text-center'>
         {isAuthenticated ? (

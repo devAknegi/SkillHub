@@ -6,7 +6,7 @@ import AuthenticatedApp from "./Components/AuthenticatedApp";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isSideNavbarVisible, setIsSideNavbarVisible] = useState<boolean>(true);
+  const [isSideNavbarVisible, setIsSideNavbarVisible] = useState<boolean>(false);
   
   const handleLogin = () => {
     setIsAuthenticated(true);

@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import FeaturePage from "./FeaturePage";
-
-const LandingPage = () => {
+const LandingPage = () =>  {
   return (
     <div className="w-full h-full">
       <section className='grid grid-cols-1 lg:grid-cols-2 space-x-5 items-center justify-center min-h-screen sm:pt-20 xl:text-left text-center'>
@@ -19,9 +19,9 @@ const LandingPage = () => {
             exchanging skills with those offering their expertise.
           </p>
           <div className='mt-10 w-full'>
-            <button className='px-5 py-3 mx-5 rounded-full border border-pink-700 bg-pink-500 text-black font-medium hover:shadow-[0_0_20px_rgba(192,7,130,0.9)] hover:bg-pink-600'>
+            <Link to="/app/dashboard" className='px-5 py-3 mx-5 rounded-full border border-pink-700 bg-pink-500 text-black font-medium hover:shadow-[0_0_20px_rgba(192,7,130,0.9)] hover:bg-pink-600'>
               Get Started
-            </button>
+            </Link>
             <button className='px-5 py-3 mx-5 rounded-full border border-pink-700 hover:shadow-[0_0_10px_rgba(192,7,130,0.6)] hover:border-pink-700'>
               Contact Us
             </button>
