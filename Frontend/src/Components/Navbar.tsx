@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <nav
-      className={`flex items-center fixed justify-between w-full mb-5 py-3 px-8`}
+      className={`flex items-center top-0 fixed justify-between backdrop-blur-lg w-full mb-5 py-3 px-8`}
     >
       <div className='flex flex-center items-center'>
         {isAuthenticated ? (

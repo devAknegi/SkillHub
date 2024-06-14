@@ -5,8 +5,10 @@
 
 :root {
   --lightblue: #3bcaff;
-  --lightpink: #df61f6;
+  --lightpink: #f556f9;
+  --lightorange: #ffa555;
   --darkblue: #010112;
+  --torq:#32d0ff;
 }
 
 *,
@@ -33,5 +35,28 @@ button {
 }
 
 .span1{
-  color: var(--lightblue);
+  color: var(--torq);
+}
+
+
+.skills{
+  font-weight: 600;
+
+  background: linear-gradient(to right,var(--lightorange),var(--lightpink),var(--torq));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.custom-line-gap {
+  line-height: 2; 
+}
+
+.skillhub {
+  font-size: large;
+  font-weight: bold;
+  background: linear-gradient(to right,var(--lightorange),var(--lightpink),var(--torq));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
