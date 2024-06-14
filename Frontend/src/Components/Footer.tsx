@@ -53,11 +53,11 @@ const footerContent = [
 
 const Footer = () => {
   return (
-    <footer className='w-full border-t py-10 text-white'>
-      <div className='container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8'>
-        {footerContent.slice(0, 4).map((section, index) => (
+    <footer className='w-full border-t py-5 text-white'>
+      <div className='container mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-5'>
+        {footerContent.map((section, index) => (
           <div key={index}>
-            <h3 className='text-lg font-semibold mb-4'>{section.title}</h3>
+            <h3 className='text-lg font-semibold mb-5'>{section.title}</h3>
             <ul>
               {section.items.map((item, idx) => (
                 <li className='mb-2' key={idx}>
@@ -69,20 +69,6 @@ const Footer = () => {
             </ul>
           </div>
         ))}
-        <div className='col-span-2 md:col-span-4 mt-8'>
-          <h3 className='text-lg font-semibold mb-4'>
-            {footerContent[4].title}
-          </h3>
-          <ul className='flex flex-wrap gap-4'>
-            {footerContent[4].items.map((item, idx) => (
-              <li key={idx}>
-                <Link to='#' className='hover:underline'>
-                  {item}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
       <div className='container mx-auto px-4 mt-8 border-t border-gray-700 pt-4 flex flex-col md:flex-row justify-between items-center'>
         <p>© 2024 All Rights Reserved, SkillHub®</p>
@@ -95,7 +81,6 @@ const Footer = () => {
           </Link>
         </div>
         <div className='flex space-x-4 mt-4 md:mt-0'>
-          
           <Link to='#' className='hover:underline text-blue-600'>
             <FaDiscord />
           </Link>

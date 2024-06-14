@@ -1,6 +1,7 @@
 import { FaRectangleList, FaStore, FaUserAstronaut } from "react-icons/fa6";
 import { TbCategory, TbMessage, TbPasswordUser } from "react-icons/tb";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -72,7 +73,18 @@ const FeaturePage = () => {
           ))}
         </div>
       </div>
-      <div className='h-screen' />
+      <div className='flex flex-col items-center justify-center w-full bg-slate-200 text-black gap-10 p-10 mb-20'>
+        <h1 className='text-4xl font-semibold text-dkblue'>
+          <span className='text-pink-700'>Start enhancing</span> skills with
+          SkillHub🚀
+        </h1>
+        <p className='text-xl font-normal'>
+          Our free plan has everything you need. Just show your Skills!{" "}
+        </p>
+        <Link to="/app/dashboard" className='px-5 py-2 mx-5 rounded-xl border border-pink-700 bg-pink-400 text-black font-medium hover:shadow-[0_0_10px_rgba(192,7,130,0.9)] hover:bg-pink-500'>
+          Get Started for free
+        </Link>
+      </div>
       <Footer />
     </section>
   );

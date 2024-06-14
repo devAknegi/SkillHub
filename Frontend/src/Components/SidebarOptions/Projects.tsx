@@ -1,7 +1,9 @@
 const Projects = () => {
   return (
-    <div>Projects</div>
-  )
-}
+    <div className='w-full'>
+      <div className='bg-white m-5 text-dkblue'>PROJECTS</div>
+    </div>
+  );
+};
 
-export default Projects
+export default Projects;

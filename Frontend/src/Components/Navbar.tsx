@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Divide as Hamburger } from "hamburger-react";
 import Options from "./Options";
+// import Dashboard from "./SidebarOptions/Dashboard";
 interface NavbarProps {
   isAuthenticated: boolean;
   onLogout: () => void;
@@ -30,14 +31,18 @@ const Navbar: React.FC<NavbarProps> = ({
     navigate("/app/dashboard");
   };
 
+  const handleProfilepage = () => {
+    navigate("/app/dashboard");
+  };
+
   return (
     <nav
-      className={`flex items-center top-0 fixed justify-between backdrop-blur-lg w-full mb-5 py-3 px-8`}
+      className={`flex items-center top-0 fixed justify-between backdrop-blur-lg w-full mb-5 py-3 pr-5`}
     >
-      <div className='flex flex-center items-center'>
+      <div className='flex items-center pl-3'>
         {isAuthenticated ? (
           <button type='button' onClick={toggleSideNavbar}>
-            <Hamburger size={25} easing='ease-in' />{" "}
+            <Hamburger size={20} easing='ease-in' />{" "}
           </button>
         ) : (
           <></>
@@ -49,19 +54,28 @@ const Navbar: React.FC<NavbarProps> = ({
           <img src={"/logo.png"} className='w-10 h-10' alt='logo' />
           <span className='md:block hidden md:font-semibold p-1'>SkillHub</span>
         </Link>
-        {isAuthenticated ? <Options /> : <> </>}
+        {isAuthenticated && location.pathname !== "/" ? <Options /> : <> </>}
       </div>
       <div className='flex space-x-4 items-center text-center'>
         {isAuthenticated ? (
           <>
-            <div></div>
-            <button
-              onClick={handleLogout}
-              className='rounded-[15px] font-semibold w-[100px] py-[10px] transition duration-500 text-pink-500
+            {location.pathname === "/" ? (
+              <button
+                onClick={handleProfilepage}
+                className='rounded-full transition duration-500
+              border border-transparent hover:shadow-[0_10px_30px_rgba(192,7,130,0.6)] hover:border-pink-700 overflow-hidden'
+              >
+                <img src='/pfp.jpg' alt='profile_pic' className='w-[40px] lg:w-[50px]' />
+              </button>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className='rounded-[15px] font-semibold w-[100px] py-[10px] transition duration-500 text-pink-500
               border border-transparent hover:text-white hover:shadow-[0_0_20px_rgba(192,7,130,0.6)] hover:border-pink-700'
-            >
-              Logout
-            </button>
+              >
+                Logout
+              </button>
+            )}
           </>
         ) : (
           <>
