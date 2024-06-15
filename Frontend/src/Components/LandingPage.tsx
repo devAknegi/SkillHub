@@ -31,7 +31,7 @@ const LandingPage = () =>  {
           <img
             src='/bg.jpeg'
             alt='background'
-            className=' w-[70%] h-[70%] rounded-[70px] border border-white cursor-pointer'
+            className=' w-[70%] h-[70%] rounded-[70px] border border-lttorq cursor-pointer'
           />
         </div>
       </section>

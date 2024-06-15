@@ -59,10 +59,10 @@ const FeaturePage = () => {
           {features.map((feature) => (
             <div
               key={feature.key}
-              className='flex flex-col items-center md:items-left justify-center space-y-5 border max-w-[420px] min-h-[250px] px-3 hover:border-ltpink transition duration-200 cursor-pointer rounded-xl'
+              className='flex flex-col items-center md:items-left justify-center space-y-5 border max-w-[420px] min-h-[250px] px-3 hover:border-lttorq transition duration-200 cursor-pointer rounded-xl'
             >
               <div className='flex flex-col gap-2 items-center text-xl'>
-                <span className='text-3xl border p-3 rounded-full border-ltblue'>
+                <span className='text-3xl border p-3 rounded-full border-ltpink'>
                   {feature.icon}{" "}
                 </span>
                 <span className=' text-ltorange'>{feature.title}</span>

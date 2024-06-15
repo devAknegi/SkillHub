@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Divide as Hamburger } from "hamburger-react";
 import Options from "./Options";
-// import Dashboard from "./SidebarOptions/Dashboard";
 interface NavbarProps {
   isAuthenticated: boolean;
   onLogout: () => void;
@@ -52,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = ({
           className='text-2xl cursor-pointer flex flex-center text-white hover:no-underline ml-5'
         >
           <img src={"/logo.png"} className='w-10 h-10' alt='logo' />
-          <span className='md:block hidden md:font-semibold p-1'>SkillHub</span>
+          <span className='md:block hidden md:font-semibold p-1 bg-transparent text-transparent bg-lg'>SkillHub</span>
         </Link>
         {isAuthenticated && location.pathname !== "/" ? <Options /> : <> </>}
       </div>
@@ -70,7 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({
             ) : (
               <button
                 onClick={handleLogout}
-                className='rounded-[15px] font-semibold w-[100px] py-[10px] transition duration-500 text-pink-500
+                className='rounded-[15px] font-semibold w-[100px] py-[8px] transition duration-500 text-pink-500
               border border-transparent hover:text-white hover:shadow-[0_0_20px_rgba(192,7,130,0.6)] hover:border-pink-700'
               >
                 Logout
@@ -80,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({
         ) : (
           <>
             <button
-              className='rounded-[15px] font-semibold w-[100px] py-[10px] transition duration-500 text-pink-500
+              className='rounded-[15px] font-semibold w-[100px] py-[8px] transition duration-500 text-pink-500
               border border-transparent hover:text-white hover:shadow-[0_0_20px_rgba(192,7,130,0.6)] hover:border-pink-700'
               // onClick={() => console.log("Login clicked")}
               onClick={handleLogin}
@@ -88,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({
               Login
             </button>
             <button
-              className='border-0 rounded-[15px] font-semibold w-[100px] py-[10px] transition duration-500 text-white shadow-[0_5px_5px_rgba(192,7,130,0.4)] bg-pink-700/90 mr-10 hover:shadow-[0_10px_10px_rgba(192,7,130,0.4)] hover:bg-pink-600'
+              className='border-0 rounded-[15px] font-semibold w-[100px] py-[8px] transition duration-500 text-white shadow-[0_5px_5px_rgba(192,7,130,0.4)] bg-pink-700/90 mr-10 hover:shadow-[0_10px_10px_rgba(192,7,130,0.4)] hover:bg-pink-600'
               // onClick={() => console.log("Signup clicked")}
               onClick={handleSignUp}
             >
