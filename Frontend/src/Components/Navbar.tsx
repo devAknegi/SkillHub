@@ -21,16 +21,8 @@ const Navbar: React.FC<NavbarProps> = ({
     navigate("/");
   };
 
-  const handleSignUp = () => {
-    onLogin();
-    navigate("/app/dashboard");
-  };
   const handleLogin = () => {
     onLogin();
-    navigate("/app/dashboard");
-  };
-
-  const handleProfilepage = () => {
     navigate("/app/dashboard");
   };
 
@@ -51,7 +43,9 @@ const Navbar: React.FC<NavbarProps> = ({
           className='text-2xl cursor-pointer flex flex-center text-white hover:no-underline ml-5'
         >
           <img src={"/logo.png"} className='w-10 h-10' alt='logo' />
-          <span className='md:block hidden md:font-semibold p-1 bg-transparent text-transparent bg-lg'>SkillHub</span>
+          <span className='md:block hidden md:font-semibold p-1 bg-transparent text-transparent bg-lg'>
+            SkillHub
+          </span>
         </Link>
         {isAuthenticated && location.pathname !== "/" ? <Options /> : <> </>}
       </div>
@@ -60,11 +54,15 @@ const Navbar: React.FC<NavbarProps> = ({
           <>
             {location.pathname === "/" ? (
               <button
-                onClick={handleProfilepage}
+                onClick={handleLogin}
                 className='rounded-full transition duration-500
               border border-transparent hover:shadow-[0_10px_30px_rgba(192,7,130,0.6)] hover:border-pink-700 overflow-hidden'
               >
-                <img src='/pfp.jpg' alt='profile_pic' className='w-[40px] lg:w-[50px]' />
+                <img
+                  src='/pfp.jpg'
+                  alt='profile_pic'
+                  className='w-[40px] lg:w-[50px]'
+                />
               </button>
             ) : (
               <button
@@ -89,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({
             <button
               className='border-0 rounded-[15px] font-semibold w-[100px] py-[8px] transition duration-500 text-white shadow-[0_5px_5px_rgba(192,7,130,0.4)] bg-pink-700/90 mr-10 hover:shadow-[0_10px_10px_rgba(192,7,130,0.4)] hover:bg-pink-600'
               // onClick={() => console.log("Signup clicked")}
-              onClick={handleSignUp}
+              onClick={handleLogin}
             >
               Signup
             </button>

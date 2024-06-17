@@ -21,7 +21,7 @@ const AuthenticatedApp: React.FC<AuthenticatedAppProps> = ({ isVisible }) => {
           <Route path='home' element={<Navigate to='/' />} />
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='projects' element={<Projects />} />
-          <Route path='messages' element={<Messages />} />
+          <Route path='messages' element={<Messages sidebarVisible={isVisible} />} />
           <Route path='community' element={<Community />} />
         </Routes>
       </div>
