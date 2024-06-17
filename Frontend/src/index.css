@@ -8,7 +8,7 @@
   --lightpink: #f556f9;
   --lightorange: #ffa555;
   --darkblue: #010112;
-  --torq:#32d0ff;
+  --torq: #32d0ff;
 }
 
 *,
@@ -34,28 +34,48 @@ button {
   cursor: pointer;
 }
 
-.span1{
+.span1 {
   color: var(--torq);
 }
 
+.bg-lg {
+  background: linear-gradient(
+    to right,
+    var(--lightorange),
+    var(--lightpink),
+    var(--torq)
+  );
+  -webkit-background-clip: text;
 
-.skills{
+  background-clip: text;
+}
+
+.skills {
   font-weight: 600;
-
-  background: linear-gradient(to right,var(--lightorange),var(--lightpink),var(--torq));
+  background: linear-gradient(
+    to right,
+    var(--lightorange),
+    var(--lightpink),
+    var(--torq)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .custom-line-gap {
-  line-height: 2; 
+  line-height: 2;
 }
 
 .skillhub {
   font-size: large;
   font-weight: bold;
-  background: linear-gradient(to right,var(--lightorange),var(--lightpink),var(--torq));
+  background: linear-gradient(
+    to right,
+    var(--lightorange),
+    var(--lightpink),
+    var(--torq)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

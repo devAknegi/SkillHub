@@ -59,14 +59,14 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebarVisible }) => {
       }`}
     >
       <nav className='flex flex-col h-[90vh] overflow-hidden p-2'>
-        <div className='flex flex-col flex-grow py-5 gap-4'>
+        <div className='flex flex-col flex-grow py-2 gap-2'>
           {elements.slice(0, 4).map((element) => (
             <Link
               key={element.key}
               to={`/app/${element.key}`}
-              className={`flex items-center px-4 py-2 text-md font-medium text-gray-300 transition-colors duration-300 hover:bg-gray-700 rounded hover:no-underline ${
+              className={`flex items-center px-4 py-2 text-md font-medium transition-colors duration-300 rounded hover:no-underline ${
                 location.pathname === `/app/${element.key}`
-                  ? "bg-gray-700"
+                  ? "bg-ltblue text-black"
                   : "text-gray-300 hover:bg-gray-700"
               }`}
             >
@@ -75,19 +75,29 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebarVisible }) => {
             </Link>
           ))}
         </div>
-        <div className='mt-auto border-t pt-3'>
-          {elements.slice(4,-1).map((element) => (
+        <div className='mt-auto border-t pt-3 space-y-1'>
+          {elements.slice(4, -1).map((element) => (
             <Link
               key={element.key}
               to={`/app/${element.key}`}
-              className={`flex items-center px-4 py-2 text-md font-medium text-gray-300 transition-colors duration-300 hover:bg-gray-700 rounded hover:no-underline ${
+              className={`flex items-center px-4 py-2  text-md font-medium transition-colors duration-300 rounded hover:no-underline ${
                 location.pathname === `/app/${element.key}`
-                  ? "bg-gray-700"
+                  ? "bg-ltblue text-black"
                   : "text-gray-300 hover:bg-gray-700"
-              } ${
-                element.key === "logout"
-                  ? "text-red-500 hover:text-red-500 hover:bg-transparent"
-                  : "text-gray-300"
+              }`}
+            >
+              <span className='mr-3 text-xl'>{element.icon}</span>
+              {element.label}
+            </Link>
+          ))}
+          {elements.slice(-1).map((element) => (
+            <Link
+              key={element.key}
+              to={`/app/${element.key}`}
+              className={`flex items-center px-4 py-2 gap-2 text-md font-medium transition-colors duration-300 rounded border border-dkblue hover:no-underline ${
+                location.pathname === `/app/${element.key}`
+                  ? "text-red-600 border-red-500 "
+                  : "text-gray-300 hover:text-red-600 hover:border-red-500"
               }`}
             >
               <span className='mr-3 text-xl'>{element.icon}</span>
